@@ -1,0 +1,508 @@
+{
+  "table": {
+    "description": "A description of what the table contains",
+    "head": {
+      "rows": [
+        {
+          "rowSpanOffset": false,
+          "cells": [
+            {
+              "heading": true,
+              "colspan": "",
+              "rowspan": "",
+              "text": "Contact"
+            },
+            {
+              "heading": true,
+              "colspan": "",
+              "rowspan": "",
+              "text": "Location"
+            },
+            {
+              "heading": true,
+              "colspan": "",
+              "rowspan": "",
+              "text": "Phone/Fax"
+            },
+            {
+              "heading": true,
+              "colspan": "",
+              "rowspan": "",
+              "text": "Email"
+            }
+          ]
+        }
+      ]
+    },
+    "bodies": [
+      {
+        "rows": [
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "DCAMM Management Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7200"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "DCAMM Management Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7200"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "DCAMM Management Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7200"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "DCAMM Management Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7200"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "DCAMM Management Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7200"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Richard Goulet, Director of Operations and Maintenance"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Room 1500 McCormack Building Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "phone: (617) 727-4050 x 31293 <br> fax: (617) 727-8092"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "richard.goulet@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Christine Escott, Acting Facility Manager"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Suite 2180"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-8222"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "christine.escott@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "Ed Kennedy, Director of Security/Life Safety"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "McCormack Building, Rm 107 Boston, MA"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 727-4100 x 31237"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "ed.kennedy@state.ma.us"
+              }
+            ]
+          },
+          {
+            "rowSpanOffset": false,
+            "cells": [
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "ISA Security Office"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "2nd Floor"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "(617) 973-7120"
+              },
+              {
+                "heading": false,
+                "colspan": "",
+                "rowspan": "",
+                "text": "cmacedo@isa.us.com"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

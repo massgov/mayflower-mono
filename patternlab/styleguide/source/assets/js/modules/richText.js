@@ -1,11 +1,29 @@
 import slugify from "../helpers/slugify.js";
-export default (function (window,document,$,undefined) {
+export default (function (window, document, $) {
 
   $('.js-ma-rich-text').each(function(index){
     let $el = $(this),
       richTextIndex = index;
 
-    $el.find('table').wrap( "<div class='ma__rich-text__table-wrapper'></div>" );
+    const $table = $el.find('table');
+    $table.each(function() {
+      const $this = $(this);
+      // If this table does not have the `ma__table` class.
+      if (!$this.hasClass('ma__table') && !$this.closest('.ma__table--responsive').length) {
+        $this
+          .addClass('ma__table')
+          .wrap('<div class="ma__table--responsive js-ma-responsive-table"><div class="ma__table--responsive__wrapper"></div></div>');
+      }
+      // At this point there is a `.ma__table` class,
+      // but does this table already posses a responsive table structure.
+      else if(!$this.closest('.ma__table--responsive').length) {
+        $this
+          .wrap('<div class="ma__table--responsive js-ma-responsive-table"><div class="ma__table--responsive__wrapper"></div></div>');
+      }
+
+      const $tableNav = $('<nav class="ma__table__horizontal-nav"><button class="ma__table__horizontal-nav__left" aria-controls="{{tableID}}"><span class="visually-hidden">Scroll left</span></button><div class="ma__scroll-indicator" aria-controls="{{tableID}}" role="scrollbar" aria-orientation="horizontal"><div class="ma__scroll-indicator__button"></div></div><button class="ma__table__horizontal-nav__right" aria-controls="{{tableID}}"><span class="visually-hidden">Scroll right</span></button></nav>');
+      $this.closest('.ma__table--responsive').prepend($tableNav);
+    });
 
     // Provide css hooks to indent each child heading and its nested contents if js hook is present.
     if ($el.hasClass('js-ma-outline-indent')) {
@@ -34,4 +52,4 @@ export default (function (window,document,$,undefined) {
       });
     }
   });
-})(window,document,jQuery);
+})(window, document, jQuery);

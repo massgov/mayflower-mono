@@ -1,121 +1,144 @@
-.ma__rich-text table,
+.ma__table--responsive {
+  position: relative;
+  margin-bottom: 1.5em;
+  overflow: hidden;
+}
+
 .ma__table {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+}
 
-  thead {
+.ma__table--responsive__wrapper {
+    overflow-x: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 50px;
+}
+.ma__table--responsive .sticky-thead {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: auto; /* Prevent table from stretching to full size */
+    background: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 0 2px #dcdcdc;
 
-    th {
-      border: none;
-      font-size: 1.625rem;
-      line-height: 1.3;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -100vh;
+        height: 100vh;
+        background: white;
+        z-index: -1;
     }
-  }
+}
 
-  tbody {
-    border-top: 2px solid;
-  }
+.ma__table--responsive .sticky-thead {
+    z-index: 50;
+    width: 100%; /* Force stretch */
+}
+.ma__table--responsive td,
+.ma__table--responsive th {
+    box-sizing: border-box;
+    font-size: 1.125rem;
+    padding: 0.5rem;
+}
 
-  tr + tr {
-    border-top: 1px solid;
-  }
-
-  th, td {
-    font-size: 1.25rem;
-    padding: 10px 20px 10px 0;
+.ma__table--responsive thead {
+    border-collapse: collapse;
+    border-spacing: 0;
     text-align: left;
+    box-shadow: 0 0 0 2px #dcdcdc;
+}
+
+.ma__table--responsive tbody tr td {
+    border-bottom: 1px solid #f9f9f9;
     vertical-align: top;
-
-    &:first-child {
-      padding-left: 15px;
-    }
-  }
-
-  .is-offset th:first-child,
-  .is-offset td:first-child {
-    padding-left: 0;
-  }
 }
 
-.ma__table {
-  
-  @media ($bp-small-max) {
-    display: block;
+.ma__table__horizontal-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background:white;
+    z-index: 50;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    border-top: 2px solid #dcdcdc;
 
-    thead {
-      display: none;
-    }
-
-    tbody {
-      display: block;
-    }
-
-    tr {
-      display: block;
-    }
-
-    td,
-    th {
-      display: block;
-      font-size: 1.375rem;
-      padding-left: 40% !important;
-      padding-bottom: 0;
-      position: relative;
-
-      &:before {
-        content: attr(data-label);
-        height: 100%;
+    &:after {
+        content: '';
         position: absolute;
-          top: 10px;
-          left: 0;
-        width: 35%;
-      }
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        z-index: -1;
+        background: white;
     }
 
-    th {
-      font-size: 1.375rem;
+    .has-horizontal-scroll & {
+        display: flex;
     }
-  }
+
+
+    button {
+        background:none;
+        border: none;
+        padding: 0;
+
+        &:after {
+            content: "";
+            border-right: 4px solid;
+            border-bottom: 4px solid;
+            display: inline-block;
+            height: 10px;
+            margin-top: 3px;
+            margin-left: .3em;
+            transition: all .2s;
+            vertical-align: middle;
+            width: 10px;
+            border-color: #14558f;
+            opacity: 0.5;
+        }
+    }
+    &__left {
+        margin-right: 15px;
+        &:after {
+            transform: translateY(-4px)  translateX(0px) rotate(135deg);
+        }
+    }
+
+    &__right {
+        margin-left: 15px;
+        &:after {
+            transform: translateY(-4px) translateX(-6px) rotate(-45deg);
+        }
+    }
+
 }
 
-.ma__table--wide {
-  
-  @media ($bp-medium-max) {
-    display: block;
+.ma__scroll-indicator {
+    position: relative;
+    width:100%;
+    height: 8px;
+    border: 2px solid #14558f;
+    opacity: 0.5;
 
-    thead {
-      display: none;
-    }
-
-    tbody {
-      display: block;
-    }
-
-    tr {
-      display: block;
-    }
-
-    td,
-    th {
-      display: block;
-      padding-left: 40% !important;
-      position: relative;
-
-      &:before {
-        content: attr(data-label);
-        height: 100%;
+    .ma__scroll-indicator__button {
         position: absolute;
-          top: 10px;
-          left: 0;
-        text-align: right;
-        width: 35%;
-      }
+        height: calc(100% + 8px);
+        top: -4px;
+        background: #14558f;
+        opacity: 1;
+        cursor: grab;
     }
-
-    th {
-      font-size: 1.375rem;
-    }
-  }
 }
 
 //theme

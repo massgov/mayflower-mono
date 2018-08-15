@@ -1,0 +1,4 @@
+___DESCRIPTION___
+Change
+Patch
+- (Patternlab) DP-8725: MF for responsive and accessible tables

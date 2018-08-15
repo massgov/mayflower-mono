@@ -1,0 +1,57 @@
+{% set tableID = table.id or 'responsive-table-' ~ random() %}
+{% set tableHeaderRow = table.head.rows|last %}
+<div class="ma__table--responsive js-ma-responsive-table">
+
+  <nav class="ma__table__horizontal-nav">
+    <button class="ma__table__horizontal-nav__left" aria-controls="{{tableID}}">
+      <span class="visually-hidden">Scroll left</span>
+    </button>
+
+    <div class="ma__scroll-indicator" aria-controls="{{tableID}}" role="scrollbar" aria-orientation="horizontal">
+      <div class="ma__scroll-indicator__button"></div>
+    </div>
+
+    <button class="ma__table__horizontal-nav__right" aria-controls="{{tableID}}">
+      <span class="visually-hidden">Scroll right</span>
+    </button>
+  </nav>
+  <div class="ma__table--responsive__wrapper {{ mergedCells ? 'ma__table--merged-cells' : ''}}" id="{{tableID}}" tabindex="0" role="region" aria-orientation="horizontal" aria-label="{{table.description}}">
+    <table class="ma__table ">
+      <thead>
+        {% for row in table.head.rows %}
+          <tr>
+            {% for cell in row.cells %}
+              <th
+                scope="col"
+                {% if cell.colspan %}colspan="{{cell.colspan}}"{% endif %}
+                {% if cell.rowspan %}rowspan="{{cell.rowspan}}"{% endif %}>{{ cell.text }}</th>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </thead>
+      {% for body in table.bodies %}
+        <tbody>
+          {% for row in body.rows %}
+            <tr class="{{ row.rowSpanOffset ? 'is-offset' : '' }}">
+              {% set tableIndexOffset = row.rowSpanOffset ? 0 : 1 %}
+              {% for cell in row.cells %}
+                {% if cell.heading == "true" %}
+                  <th
+                    data-label="{{ tableHeaderRow.cells[loop.index - tableIndexOffset].text }}"
+                    scope="row"
+                    {% if cell.colspan %}colspan="{{cell.colspan}}"{% endif %}
+                    {% if cell.rowspan %}rowspan="{{cell.rowspan}}"{% endif %}>{{ cell.text }}</th>
+                {% else %}
+                  <td
+                    data-label="{{ tableHeaderRow.cells[loop.index - tableIndexOffset].text }}"
+                  {% if cell.colspan %}colspan="{{cell.colspan}}"{% endif %}
+                  {% if cell.rowspan %}rowspan="{{cell.rowspan}}"{% endif %}>{{ cell.text }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      {% endfor %}
+    </table>
+  </div>
+</div>
