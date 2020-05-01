@@ -16,8 +16,8 @@
       "data": {
         "figure": {
           "align": "align-right",
-          "image": { 
-            "alt": "alt text", 
+          "image": {
+            "alt": "alt text",
             "src": "../../assets/images/placeholder/400x300.png",
             "height": "",
             "width": ""
@@ -44,8 +44,8 @@
       "data": {
         "figure": {
           "align": "",
-          "image": { 
-            "alt": "alt text", 
+          "image": {
+            "alt": "alt text",
             "src": "../../assets/images/placeholder/800x400.png",
             "height": "",
             "width": ""
@@ -58,8 +58,8 @@
       "data": {
         "figure": {
           "align": "align-left",
-          "image": { 
-            "alt": "alt text", 
+          "image": {
+            "alt": "alt text",
             "src": "../../assets/images/placeholder/400x300.png",
             "height": "",
             "width": ""
@@ -94,7 +94,7 @@
         "unorderedList": [
           { "text": "This is a list item in an unordered list" },
           { "text": "An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list. And this is a long list item in an unordered list that can wrap onto a new line." },
-          { 
+          {
             "text": "Lists can be nested inside of each other",
             "sublist" : [
               {"text":"This is a nested list item"},
@@ -153,11 +153,11 @@
     },{
       "path": "@atoms/06-rich-text/icon-list.twig",
       "data": {
-        "iconList": [{ 
-          "text": "This is an icon list item" 
-        },{ 
+        "iconList": [{
+          "text": "This is an icon list item"
+        },{
           "text": "An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list. And this is a long list item in an unordered list that can wrap onto a new line."
-        },{ 
+        },{
           "text": "Lists can be nested inside of each other",
           "sublist" : [{
             "text":"This is a nested list item"
@@ -188,6 +188,18 @@
         "paragraph" : {
           "text": "Explicabo itaque possimus dignissimos? Repudiandae tempore, fugit illum? Iure error omnis eveniet eius iste molestias. Veritatis provident hic voluptate voluptatibus ullam accusantium, obcaecati tempora soluta praesentium accusamus sed dicta sapiente."
         }
+      }
+    },{
+      "path": "@atoms/html.twig",
+      "data": {
+        "rawHtml": [{
+          "content": {
+            "#type": "processed_text",
+            "#text": "Explicabo itaque possimus dignissimos? Repudiandae tempore, fugit illum? Iure error omnis eveniet eius iste molestias. Veritatis provident hic voluptate voluptatibus ullam accusantium, obcaecati tempora soluta praesentium accusamus sed dicta sapiente.",
+            "#format": "basic_html",
+            "#langcode": "en"
+          }
+        }]
       }
     },{
       "path": "@atoms/10-table/table.twig",

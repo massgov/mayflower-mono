@@ -1,0 +1,3 @@
+{
+  "html" : "<h2>This is an empty container</h2><p>It displays a \"blob\" of text that comes from a WYSIWYG editor. It can contain any valid html that the WSYIWG can output.</p><ul><li>This is a list item in an unordered list</li><li>An unordered list is a list in which the sequence of items is not important. Sometimes, an unordered list is a bulleted list. And this is a long list item in an unordered list that can wrap onto a new line.</li><li>This is the last list item</li></ul>"
+}

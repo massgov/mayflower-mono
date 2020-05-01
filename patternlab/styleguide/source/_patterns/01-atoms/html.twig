@@ -1,0 +1,20 @@
+{% if element.data.rawHtml.content["#type"] %}
+  {% set html = element.data.rawHtml.content %}
+{% elseif content.data %}
+<h5>content.data &lt;- skip rich-text.twig</h5>
+
+    {% set html = content.data.rawHtml.content %}
+{% elseif paragraph %}
+<h5>paragraph &lt;- skip rich-text.twig</h5>
+
+    <p style="color: green; font-weight: bold;">mapped-locations.twig</p>
+    {% set html = paragraph %}
+{% else %}
+  <p>NAY</p>
+    <h5>element.data</h5>
+    {# {{ dump(element.data) }} #}
+{% endif %}
+
+<p style="color: green; font-weight: bold;">NOTE: Determine whether using the variable html or not. </p>
+
+{{ html }}

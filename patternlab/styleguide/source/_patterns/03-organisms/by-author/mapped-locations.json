@@ -8,7 +8,10 @@
       "centered": ""
     },
     "paragraph": {
-      "text": "See details for all our locations"
+      "#text": "<p>See details for all our locations</p>",
+      "#type": "processed_text",
+      "#format": "basic_html",
+      "#langcode": "en"
     },
     "button": {
       "href": "#",
@@ -25,7 +28,7 @@
       "markers": [{
         "position": {
           "lat": 42.366565,
-          "lng": -71.058940 
+          "lng": -71.058940
         },
         "label": "A",
         "infoWindow": {
@@ -38,7 +41,7 @@
       },{
         "position": {
           "lat": 42.358795,
-          "lng": -71.063858 
+          "lng": -71.063858
         },
         "label": "B",
         "infoWindow": {

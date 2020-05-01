@@ -18,7 +18,13 @@
       {% if mappedLocations.paragraph %}
         <div class="ma__mapped-locations__info">
           {% set paragraph = mappedLocations.paragraph %}
-          {% include "@atoms/11-text/paragraph.twig" %}
+           {% set paragraph = paragraph|merge({
+                    "#text": "<p>" ~ mappedLocations.paragraph.text ~ "</p>",
+                    "#type": "processed_text",
+                    "#format": "basic_html",
+                    "#langcode": "en"
+            }) %}
+          {% include "@atoms/html.twig" %}
         </div>
       {% endif %}
       {% if mappedLocations.button %}

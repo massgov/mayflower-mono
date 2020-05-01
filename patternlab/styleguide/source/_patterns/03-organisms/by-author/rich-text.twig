@@ -11,7 +11,22 @@
 
   {# use this block to render your own content (see pattern docs) #}
   {% block rteElements %}
+{# {{ dump(ritchText.rteElements) }} #}
     {% for element in richText.rteElements %}
+
+<h5 style="color: orange;">[TEMPLATE: rich-text.twig] element.path:  {{ element.path }}</h5>
+<h5>element.data</h5>
+{{ element.data }}
+{# <h5>element.data.rawHtml</h5> #}
+{# {{ dump(element.data.rawHtml) }} #}
+{# <h5>element.data.rawHtml.</h5>
+{{ dump(element.data.rawHtml) }} #}
+{# <hr>
+{% for item in element.data.rawHtml.content %}
+  {{ item }}<br />
+  <p style="color: red;">END OF ITEM</p>
+{% endfor %}
+<hr> #}
       {% include element.path with element.data %}
     {% endfor %}
   {% endblock %}
