@@ -54,7 +54,7 @@
 
   &[data-sticky='middle'] {
     position: fixed;
-      top: 40px;
+      top: 0px;
 
     .translated-rtl &,
     .translated-ltr & {
@@ -149,7 +149,7 @@
 
       a {
         color: $c-font-base;
-        font-weight: $fonts-bold;
+        font-weight: 700;
       }
 
       &:hover a {
@@ -169,7 +169,7 @@
     a {
 
       @include ma-link-underline;
-      font-weight: $fonts-normal;
+      font-weight: 500;
     }
   }
 

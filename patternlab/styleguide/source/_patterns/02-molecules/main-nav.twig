@@ -5,15 +5,17 @@
       {% set menuId =  'menu' ~ loop.index %}
       <li  role="menuitem" class="ma__main-nav__item {{ nav.active ? 'is-active' : '' }} {{ nav.subNav ? 'has-subnav js-main-nav-toggle' : 'js-main-nav-top-link' }}" tabindex="-1">
         {% if nav.subNav %}
-          <button id="{{ buttonId }}" class="ma__main-nav__top-link" aria-haspopup="true" aria-expanded="false" tabindex="0"><span class="visually-hidden show-label">Show the sub topics of </span>{{ nav.text }}</button>
+          <button type="button" id="{{ buttonId }}" class="ma__main-nav__top-link js-main-nav__top-link" aria-haspopup="true" aria-expanded="false" aria-label="show submenu" tabindex="0">
+          <span class="visually-hidden show-label">Show the sub topics of </span>{{ nav.text }}
+          <span class="aria-hidden toggle-indicator"></span>
+          </button>
           <div class="ma__main-nav__subitems js-main-nav-content is-closed">
-            <ul id="{{ menuId }}" role="menu" aria-labelledby="{{ buttonId }}" class="ma__main-nav__container">
-              <li role="menuitem" class="ma__main-nav__subitem"><a href="{{ nav.href }}" class="ma__main-nav__link">{{ nav.text }}</a></li>
+            <ul id="{{ menuId }}" role="menu" aria-labelledby="{{ buttonId }}" class="ma__main-nav__container js-main-nav__container">
               {% for subNav in nav.subNav %}
-                <li class="ma__main-nav__subitem"><a href="{{ subNav.href }}" class="ma__main-nav__link">{{ subNav.text }}</a></li>
+                <li class="ma__main-nav__subitem js-main-nav__subitem" role="menuitem"><a href="{{ subNav.href }}" class="ma__main-nav__link js-main-nav__link">{{ subNav.text }}</a></li>
               {% endfor %}
-              <li class="ma__main-nav__subitem" role="menuitem">
-                <a href="{{ nav.href }}" class="ma__main-nav__link">
+              <li class="ma__main-nav__subitem js-main-nav__subitem" role="menuitem">
+                <a href="{{ nav.href }}" class="js-main-nav__link ma__main-nav__link">
                   {{ icon('arrow-bent') }}
                   <span>
                     <span class="visually-hidden">See all topics under </span>
@@ -23,15 +25,8 @@
               </li>
             </ul>
           </div>
-        {% elseif nav.href %}
-          {# This is temporary. We want to provide visual context for the COVID-19 menu link. #}
-          {% set altClass = '' %}
-          {% if 'covid' in nav.text|lower %}
-            {% set altClass = 'cv-alternate-style' %}
-          {% endif %}
-          <a href="{{ nav.href }}" class="ma__main-nav__top-link {{ altClass }}" tabindex="0">{{ nav.text }}</a>
         {% else %}
-          <button id="{{ buttonId }}" class="ma__main-nav__top-link" tabindex="{{ loop.first? 0 : -1 }}">{{ nav.text }}</button>
+          <button type="button" id="{{ buttonId }}" class="ma__main-nav__top-link" tabindex="{{ loop.first? 0 : -1 }}">{{ nav.text }}</button>
         {% endif %}
       </li>
     {% endfor %}

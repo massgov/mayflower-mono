@@ -11,7 +11,7 @@
       </li>
     {% endif %}
     {% for item in utilityNav.items %}
-      <li class="ma__utility-nav__item{% if not(item.text == 'State Organizations') %} js-util-nav-toggle{% endif %}">
+      <li id="{{ item.id }}" class="ma__utility-nav__item{% if not(item.text == 'State Organizations') %} js-util-nav-toggle{% endif %}">
       {% if item.text == 'State Organizations' %}
         {# Get hef value. #}
         {% for panel in item.panels %}
@@ -23,17 +23,19 @@
          {% endfor %}
         {% endfor %}
       {% else %}
-        <button class="ma__utility-nav__link js-util-nav-toggle"
+        <button
+            type="button"
+            class="ma__utility-nav__link js-util-nav-toggle"
             aria-label="{% if item.ariaLabelText %}{{ item.ariaLabelText }}{% else %}{{ item.text }}{% endif %}">
             {{ icon(item.icon) }}
             <span>
               {{ item.text }}
             </span>
+            <span class="aria-hidden toggle-indicator"></span>
           </button>
           <div aria-hidden="true" class="ma__utility-nav__content js-util-nav-content is-closed">
             <div class="ma__utility-nav__container">
               <div class="ma__utility-nav__content-title">
-                <button class="ma__utility-nav__close js-close-util-nav"><span>{{ item.closeText }}</span><span class="ma__utility-nav__close-icon" aria-hidden="true">+</span></button>
                 {{ icon(item.icon) }}
                 <h2>{{ item.text }}</h2>
               </div>
@@ -44,6 +46,7 @@
                 {% endfor %}
               </div>
             </div>
+            <button type="button" class="ma__utility-nav__close js-close-util-nav"><span>{{ item.closeText }}</span><span class="ma__utility-nav__close-icon" aria-hidden="true">+</span></button>
           </div>
         {% endif %}
       </li>

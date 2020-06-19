@@ -1,234 +1,287 @@
-export default (function (window, document, $, undefined) {
+const body = document.querySelector("body");
+let width = body.clientWidth;
+const menuButton = document.querySelector(".ma__header .js-header-menu-button");
+let menuButtonText = document.querySelector('.ma__header .js-header__menu-text');
+let buttonLabel;
+const feedbackButton = document.querySelector('.ma__fixed-feedback-button');
+const mainMenu = document.querySelector('.ma__header .js-main-nav');
+let menuItems = document.querySelectorAll('.ma__header .js-main-nav-toggle');
+const menuOverlay = document.querySelector('.menu-overlay');
+const searchForm = document.querySelector(".ma__header .js-header-search-menu .js-header-search-form");
 
-  let windowWidth = window.innerWidth;
 
-  $(window).resize(function () {
-    windowWidth = window.innerWidth;
+if (null !== menuButtonText) {
+  buttonLabel = menuButtonText.textContent;
+}
+// Open and close the menu
+if (null !== menuButton) {
+  menuButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    if (body.classList.contains("show-menu")) {
+      closeMenu();
+    } else {
+      menuButton.focus();
+      openMenu();
+    }
   });
 
-  $('.js-main-nav').each(function () {
-    let openClass = "is-open",
-      hasFocus = "has-focus",
-      closeClass = "is-closed",
-      submenuClass = "show-submenu",
-      $parent = $(this),
-      $mainNavItem = $parent.find('.js-main-nav-toggle'),
-      breakpoint = 840; // matches CSS breakpoint for Main Nav
+  menuButton.addEventListener('keydown', function (e) {
 
-    $mainNavItem.on('keydown', function (e) {
-      // Grab all the DOM info we need...
-      let $link = $(this),
-        $otherLinks = $mainNavItem.not($link),
-        $topLevelLinks = $parent.find('.ma__main-nav__top-link'),
-        open = $link.hasClass(openClass),
-        $openContent = $parent.find('.js-main-nav-content.' + openClass),
-        $focusedElement = $(document.activeElement),
-        menuFlipped = (windowWidth < breakpoint),
-        // relevant if open..
-        $topLevelItem = $focusedElement.parents('.ma__main-nav__item'),
-        $topLevelLink = $topLevelItem.find('.ma__main-nav__top-link'),
-        $dropdownLinks = $link.find('.ma__main-nav__subitem .ma__main-nav__link'),
-        dropdownLinksLength = $dropdownLinks.length,
-        focusIndexInDropdown = $dropdownLinks.index($focusedElement),
-        // Easy access to the key that was pressed.
-        keycode = e.keyCode,
-        action = {
-          'skip': keycode === 9, // tab
-          'close': keycode === 27, // esc
-          'left': keycode === 37, // left arrow
-          'right': keycode === 39, // right arrow
-          'up': keycode === 38, // up arrow
-          'down': keycode === 40, // down arrow
-          'space': keycode === 32, //space
-          'enter': keycode === 13 // enter
-        };
+    if (e.code == 'ArrowDown') {
+      event.preventDefault();
+      openMenu();
 
-      // Default behavior is prevented for all actions except 'skip'.
-      if (action.close || action.left || action.right || action.up || action.down) {
-        e.preventDefault();
-      }
-
-      if (action.enter || action.space) {
-        $link.addClass(hasFocus);
-        $otherLinks.removeClass(hasFocus);
-      }
-
-      if (action.skip) {
-        console.log(focusIndexInDropdown);
-      }
-
-      if (action.skip && dropdownLinksLength === (focusIndexInDropdown + 1)) {
-        console.log(focusIndexInDropdown);
-        hide($openContent);
-        $topLevelLink.attr('aria-expanded', 'false');
-        $link.removeClass(hasFocus);
-        return;
-      }
-
-      // if (action.skip && focusIndexInDropdown === -1) {
-      //   console.log('back');
-      // }
-
-      // Navigate into or within a submenu. This is needed on up/down actions
-      // (unless the menu is flipped and closed) and when using the right arrow
-      // while the menu is flipped and submenu is closed.
-      if (((action.up || action.down) && !(menuFlipped && !open))
-        || (action.right && menuFlipped && !open)) {
-        // Open pull down menu if necessary.
-        if (!open && !$link.hasClass(hasFocus)) {
-          show($topLevelItem.find('.js-main-nav-content'));
-          $topLevelLink.attr('aria-expanded', 'true');
-          $link.addClass(openClass);
-        }
-
-        // Adjust index of active menu item based on performed action.
-        focusIndexInDropdown += (action.up ? -1 : 1);
-        // If the menu is flipped, skip the last item in each submenu. Otherwise,
-        // skip the first item. This is done by repeating the index adjustment.
-        if (menuFlipped) {
-          if (focusIndexInDropdown === dropdownLinksLength - 1) {
-            focusIndexInDropdown += (action.up ? -1 : 1);
-          }
-        } else {
-          if (focusIndexInDropdown === 0 || focusIndexInDropdown >= dropdownLinksLength) {
-
-            focusIndexInDropdown += (action.up ? -1 : 1);
-          }
-        }
-        // Wrap around if at the end of the submenu.
-        focusIndexInDropdown = ((focusIndexInDropdown % dropdownLinksLength) + dropdownLinksLength) % dropdownLinksLength;
-        $dropdownLinks[focusIndexInDropdown].focus();
-        return;
-      }
-
-      // Close menu and return focus to menubar
-      if (action.close || (menuFlipped && action.left)) {
-        hide($openContent);
-        $link.removeClass(openClass);
-        $link.removeClass(hasFocus);
-        $topLevelLink.focus().attr('aria-expanded', 'false');
-        return;
-      }
-
-      // Navigate between submenus. This is needed for left/right actions in
-      // normal layout, or up/down actions in flipped layout (when nav is closed).
-      if (((action.left || action.right) && !menuFlipped) ||
-        ((action.up || action.down) && menuFlipped && !open)) {
-        let index = $topLevelLinks.index($topLevelLink),
-          prev = action.left || action.up,
-          linkCount = $topLevelLinks.length;
-
-        // hide content
-        // If menubar focus
-        //  - Change menubar item
-        //
-        // If dropdown focus
-        //  - Open previous pull down menu and select first item
-        hide($openContent);
-        $topLevelLink.attr('aria-expanded', 'false');
-        $link.removeClass(hasFocus);
-        // Get previous item if left arrow, next item if right arrow.
-        index += (prev ? -1 : 1);
-        // Wrap around if at the end of the set of menus.
-        index = ((index % linkCount) + linkCount) % linkCount;
-        $topLevelLinks[index].focus();
-        return;
-      }
-
-    })
-      .on('mouseenter', function (e) {
-        $(this).children('button').attr("aria-expanded", "true");
-        $('.has-focus').removeClass('has-focus');
-
-        if (windowWidth > breakpoint) {
-          let $openContent = $(this).find('.js-main-nav-content');
-          show($openContent);
-        }
-      })
-      .on('mouseleave', function (e) {
-        $(this).children('button').attr("aria-expanded", "false");
-
-        if (windowWidth > breakpoint) {
-          let $openContent = $(this).find('.js-main-nav-content');
-          hide($openContent);
-        }
-      });
-
-    $mainNavItem.children('button, a').on('click', function (e) {
-      let $el = $(this),
-        $elParent = $el.parent(),
-        $content = $elParent.find('.js-main-nav-content'),
-        $openContent = $parent.find('.js-main-nav-content.' + openClass),
-        isOpen = $content.hasClass(openClass);
-
-      // mobile
-      if (windowWidth <= breakpoint) {
-        e.preventDefault();
-        // add open class to this item
-        $elParent.addClass(openClass);
-        show($content);
-        $el.attr('aria-expanded', 'true');
+      if (window.innerWidth > 620) {
+        setTimeout(function timeoutFunction() {
+          menuItems[0].querySelector(".js-main-nav__top-link").focus();
+        }, 500);
       } else {
-        hide($openContent);
-        $el.attr('aria-expanded', 'false');
-
-        if (!isOpen) {
-          show($content);
-          $el.attr('aria-expanded', 'true');
-        }
-      }
-    });
-
-    $('.js-close-sub-nav').on('click', function () {
-      let $openContent = $parent.find('.js-main-nav-content.' + openClass);
-      hide($openContent);
-    });
-
-    // Hide any open submenu content when the sidebar menu is closed
-    $('.js-header-menu-button').click(function () {
-      let $openContent = $parent.find('.js-main-nav-content.' + openClass);
-      hide($openContent);
-
-      $('.ma__utility-nav__content').addClass('is-closed');
-    });
-
-    function hide($content) {
-      $('body').removeClass(submenuClass);
-      $parent.find("." + openClass).removeClass(openClass);
-
-      if (windowWidth <= breakpoint) {
-        $content.addClass(closeClass);
-      } else {
-        $content
-          .stop(true, true)
-          .slideUp('fast', function () {
-            $content
-              .addClass(closeClass)
-              .slideDown(0);
-          });
+        setTimeout(function timeoutFunction() {
+          document.querySelector('.js-header__nav-search input').focus();
+        }, 500);
       }
     }
 
-    function show($content) {
-      $('body').addClass(submenuClass);
-      if (windowWidth <= breakpoint) {
-        $content
-          .addClass(openClass)
-          .removeClass(closeClass);
-      } else {
-        $content
-          .stop(true, true)
-          .delay(200)
-          .slideUp(0, function () {
-            $content
-              .addClass(openClass)
-              .removeClass(closeClass)
-              .slideDown('fast');
-          });
-      }
+    if (e.code == 'Tab') {
+      e.preventDefault();
+      document.querySelector('.ma__header-search__input').focus();
+    }
+
+    if (e.shiftKey && e.code == 'Tab') {
+      closeMenu();
+    }
+
+    if (e.code == 'Escape' || e.which == '27') {
+      closeMenu();
+    }
+  });
+}
+
+if (null !== searchForm) {
+  searchForm.addEventListener("submit", function (event) {
+    if (window.innerWidth > 620) {
+      return;
+    }
+    event.preventDefault();
+
+    openMenu();
+
+    setTimeout(function timeoutFunction() {
+
+      document.querySelector('.js-header__nav-search input').focus();
+
+    }, 500);
+  });
+}
+
+[].forEach.call(menuItems, function (item) {
+
+  const itemButton = item.querySelector('.js-main-nav__top-link');
+  const subMenu = item.querySelector('.js-main-nav-content');
+  const subItems = subMenu.querySelector('.js-main-nav__container');
+  let subMenuItems = subMenu.querySelectorAll('.js-main-nav__subitem');
+
+  subItems.style.opacity = "0";
+
+  itemButton.addEventListener('focus', function(e){
+    closeSubMenus(item);
+  });
+
+  itemButton.addEventListener('click', function (e) {
+
+    closeSubMenus(item);
+
+
+    if (item.classList.contains("submenu-open")) {
+      item.classList.remove("submenu-open");
+      itemButton.setAttribute('aria-expanded', 'false');
+      itemButton.setAttribute('aria-label', 'show menu');
+      item.style.pointerEvents = "none";
+
+      setTimeout(function timeoutFunction() {
+        item.removeAttribute('style');
+      }, 700);
+    } else {
+      item.classList.add("submenu-open");
+      itemButton.setAttribute('aria-expanded', 'true');
+      item.style.pointerEvents = "none";
+      itemButton.setAttribute('aria-label', 'hide menu');
+      setTimeout(function timeoutFunction() {
+        item.removeAttribute('style');
+      }, 700);
     }
 
 
+    if (subMenu.classList.contains('is-closed')) {
+
+      /** Show the subMenu. */
+
+      subMenu.classList.remove('is-closed');
+      subMenu.style.height = "auto";
+
+      /** Get the computed height of the subMenu. */
+      var height = subMenu.clientHeight + "px";
+
+
+      /** Set the height of the submenu as 0px, */
+      /** so we can trigger the slide down animation. */
+      subMenu.style.height = "0";
+
+      setTimeout(function timeoutFunction() {
+        subMenu.style.height = height;
+        subItems.style.opacity = "1";
+      }, 50);
+
+      /** Slide up. */
+    } else {
+      subMenu.style.height = "0";
+      subItems.style.opacity = "0";
+
+      setTimeout(function timeoutFunction() {
+        subMenu.classList.add('is-closed');
+
+      }, 500);
+    }
   });
 
-})(window, document, jQuery);
+  itemButton.addEventListener('keydown', function (e) {
+
+    if (e.code == 'ArrowDown') {
+      let first = subItems.getElementsByTagName("li")[0];
+      first.querySelector('.js-main-nav__link').focus()
+    }
+
+    if (e.code == 'Escape' || e.which == '27') {
+      if (item.classList.contains('submenu-open')) {
+        subItems.style.opacity = "0";
+        subMenu.style.height = "0";
+        itemButton.parentElement.classList.remove('submenu-open');
+        itemButton.setAttribute('aria-expanded', 'false');
+        itemButton.setAttribute('aria-label', 'show menu');
+
+        setTimeout(function timeoutFunction() {
+          subMenu.classList.add('is-closed');
+        }, 500);
+        
+      }
+      else {
+        closeMenu();
+      }
+    }
+
+    if (e.shiftKey && e.code == 'Tab') {
+      subItems.style.opacity = "0";
+      subMenu.style.height = "0";
+      item.classList.remove('submenu-open');
+      itemButton.setAttribute('aria-expanded', 'false');
+      itemButton.setAttribute('aria-label', 'show menu');
+
+      setTimeout(function timeoutFunction() {
+        subMenu.classList.add('is-closed');
+      }, 500);
+    }
+
+    if (width > 840 && e.key == 'Tab') {
+      if (!itemButton.parentElement.nextElementSibling 
+      && !itemButton.parentElement.classList.contains('submenu-open')) {
+        closeMenu();
+      }
+    }
+  });
+
+  [].forEach.call(subMenuItems, function (subItem) {
+    const prevSib = subItem.previousElementSibling;
+    const nextSib = subItem.nextElementSibling;
+
+    subItem.addEventListener('keydown', function (e) {
+      
+      switch (e.code) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+          if (subItem = prevSib) {
+            prevSib.querySelector('.js-main-nav__link').focus();
+          }
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+          if (subItem = nextSib) {
+            nextSib.querySelector('.js-main-nav__link').focus();
+          }
+          break;
+        case 'Escape':
+          itemButton.focus();
+
+           break;
+      }
+    });
+  });
+});
+
+function closeMenu() {
+  body.classList.remove("show-menu");
+  menuOverlay.classList.remove("overlay-open");
+  menuButtonText.textContent = "Menu";
+  menuButton.setAttribute('aria-pressed', 'false');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open the main menu for mass.gov');
+  buttonLabel = "Menu";
+  feedbackButton.classList.remove('hide-button');
+}
+
+function openMenu() {
+  body.classList.add("show-menu");
+  menuOverlay.classList.add("overlay-open");
+  menuButtonText.textContent = "Close";
+  buttonLabel = "Close";
+  menuButton.setAttribute('aria-pressed', 'true');
+  menuButton.setAttribute('aria-expanded', 'true');
+  menuButton.setAttribute('aria-label', 'Close the main menu for mass.gov');
+  feedbackButton.classList.add('hide-button');
+}
+
+function closeSubMenus(item) {
+  //Close other open submenus
+  let siblings = [];
+  let thisSibling = item.parentNode.firstChild;
+
+  while (thisSibling) {
+    if (thisSibling !== item && thisSibling.nodeType === Node.ELEMENT_NODE)
+      siblings.push(thisSibling);
+    thisSibling = thisSibling.nextElementSibling || thisSibling.nextSibling;
+  }
+
+  for (let i = 0; i < siblings.length; i++) {
+    if (siblings[i].classList.contains('submenu-open')) {
+
+      setTimeout(function timeoutFunction() {
+        siblings[i].querySelector('.js-main-nav-content').style.height = "0";
+        siblings[i].querySelector('.js-main-nav-content').classList.add('is-closed');
+        siblings[i].querySelector('.js-main-nav__container').style.opacity = "0";
+        siblings[i].classList.remove('submenu-open');
+        siblings[i].querySelector('.js-main-nav__top-link').setAttribute('aria-expanded', 'false');
+        siblings[i].querySelector('.js-main-nav__top-link').setAttribute('aria-label', 'show menu');
+        
+      }, 500);
+
+    }
+  }
+}
+
+// Close menu when utility nav is clicked
+document.querySelector('.js-utility-nav--wide').addEventListener('click', function () {
+  closeMenu();
+});
+
+// Close and reset menu on overlay click
+menuOverlay.addEventListener("click", function () {
+  closeMenu();
+});
+
+let debouncer;
+window.onresize = function () {
+  clearTimeout(debouncer);
+  debouncer = setTimeout(function () {
+    width = body.clientWidth;
+  }, 100);
+};

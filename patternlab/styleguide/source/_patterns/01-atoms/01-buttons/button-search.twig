@@ -3,6 +3,6 @@
 {% endif %}
 {% set buttonClasses = buttonSearch.usage ? "ma__button-search--" ~ buttonSearch.usage : "ma__button-search" %}
 <button type="submit" class="{{ buttonClasses }}">
-  <span class="ma__button-search__label">{{ buttonSearch.text }}</span>
+  <span class="ma__button-search__label" aria-label="{{ buttonSearch.text }}">{{ buttonSearch.text }}</span>
   {{ icon('search') }}
 </button>

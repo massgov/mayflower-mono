@@ -1,0 +1,78 @@
+{
+  "hideHeaderSearch": false,
+  "hideBackTo": true,
+  "searchBanner": {
+    "bgWide": "../../assets/images/placeholder/1600x800.png",
+    "bgNarrow": "../../assets/images/placeholder/800x800.png",
+    "id": "GUID935283478A",
+    "searchBannerForm": {
+      "action": "",
+      "buttonText": "Search",
+      "inputText": {
+        "labelText": "Search terms",
+        "required": false,
+        "id": "GUID138490237",
+        "name": "search",
+        "type": "text",
+        "placeholder": "Search..."
+      }
+    },
+    "pageIntro": {
+      "pageTitle": {
+        "text": "Welcome to Massachusetts"
+      },
+      "subTitle": "What would you like to do?"
+    },
+    "linkList": {
+      "compHeading": {
+        "title": "Popular Searches",
+        "level": "",
+        "color": "yellow",
+        "centered": "true"
+      },
+      "description": null,
+      "stacked": false,
+      "hideBullets": true,
+      "links" : [{
+        "href": "#",
+        "text":"Apply for Unemployment",
+        "chevron": "true"
+      },{
+        "href": "#",
+        "text":"Register my Vehicle",
+        "chevron": "true"
+      },{
+        "href": "#",
+        "text":"Find My Local Polling Station",
+        "chevron": "true"
+      },{
+        "href": "#",
+        "text":"Search for Unclaimed Property",
+        "chevron": "true"
+      },{
+        "href": "#",
+        "text":"Learn about Fishing and Hunting",
+        "chevron": "true"
+      }]
+    },
+    "bannerCredit": {
+      "imageName": "MIT Media Lab",
+      "imageAuthor": "Sir Mix Alot"
+    }
+  },
+
+  "stackedRowSections": [{
+    "title": "",
+    "id": "",
+    "pageContent": [{
+      "path": "@base/placeholder.twig",
+      "data": {
+        "placeholder": {
+          "text":"Page content"
+        }
+      }
+    }],
+
+    "sideBar": null
+  }]
+}

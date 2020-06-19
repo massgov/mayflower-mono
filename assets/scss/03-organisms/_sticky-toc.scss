@@ -306,16 +306,12 @@
     height: 0;
     overflow: hidden;
     position: fixed;
-    top: 40px;
+    top: 0;
     left: 0;
     transition: height 0.1s ease-out;
     width: 100%;
     background-color: $c-bg-subtle;
     z-index: 79;
-
-    @media ($bp-header-toggle-min) {
-      top: 0;
-    }
   }
 }
 
@@ -457,7 +453,7 @@
   width: 100%;
   height: 100%;
   max-width: 550px;
-  top: 40px;
+  top: 0;
   z-index: 99;
   background-color: $c-white;
   transition: right 0.3s ease-out;
@@ -469,7 +465,6 @@
   }
 
   @media ($bp-header-toggle-min) {
-    top: 0;
     padding-top: 75px;
   }
 

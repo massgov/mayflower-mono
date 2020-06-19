@@ -66,3 +66,27 @@
     @include ma-button-search($c-white, $c-primary-alt);
   }
 }
+
+.ma__header__search-bar {
+
+  @media ($bp-small-max) {
+
+    .ma__button-search__label {
+      display: none !important;
+    }
+  
+    .ma__button-search--secondary {
+      background-color: transparent;
+      border-color: transparent !important;
+      position: absolute !important;
+      top: 5px !important;
+      right: 5px;
+      height: 25px !important;
+      min-height: 20px !important;
+    }
+  
+    svg {
+      fill: $c-white;
+    }
+  }
+}

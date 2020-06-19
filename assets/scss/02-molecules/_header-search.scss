@@ -4,8 +4,15 @@ $bp-header-search-reduce-button: "max-width: 700px";
 .ma__header-search {
   display: inline-block;
   max-width: 560px;
-  position: relative;
   width: 100%;
+
+  .ma__header__nav-search & {
+    position: relative;
+  }
+
+  @media ($bp-small-min) {
+    position: relative;
+  }
 
   &__label {
 

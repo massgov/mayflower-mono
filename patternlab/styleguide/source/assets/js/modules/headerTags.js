@@ -6,6 +6,7 @@ export default (function (window,document,$,undefined) {
     let $el = $(this),
         $showHideButton = $('.js-header-tag-button', $el),
         $dynamicItems = $('a:nth-child(n+4)', $el),
+        $focusItem = $('a:nth-child(4)', $el),
         id = $el.attr('id') || 'headerTags' + (index + 1),
         open = $el.hasClass('is-open');
 
@@ -25,6 +26,7 @@ export default (function (window,document,$,undefined) {
         if ($el.hasClass('is-open')) {
           $showHideButton.attr('aria-expanded', 'true');
           $dynamicItems.show();
+          $focusItem.focus();
         }
         else {
           $showHideButton.attr('aria-expanded', 'false');
@@ -37,7 +39,8 @@ export default (function (window,document,$,undefined) {
     let $tagWrapper = $(this);
     let $button = $tagWrapper.find('.js-relationship-indicator-button');
     let $buttonCounter = $button.find('.tag-count');
-    let $hiddenTag = $tagWrapper.find('.ma__relationship-indicators--term:hidden');
+    let $hiddenTag = $tagWrapper.find('.js-wrapped-link:hidden');
+    let $focusTag = $hiddenTag.first().find('a');
     let tagCount = $hiddenTag.length;
     let $tagState = $button.find('.tag-state');
 
@@ -59,6 +62,16 @@ export default (function (window,document,$,undefined) {
 
       // Change button text.
       $tagState.text($tagStateText === 'fewer' ? 'more' : 'fewer');
+
+      $button.attr('aria-pressed', function(_, attr) { return !(attr == 'true') });
+
+    });
+
+    $button.on('keydown', function(e) {
+      if (e.keyCode === 9 && $tagWrapper.parent().hasClass('tags-open')) { 
+        $focusTag.focus();
+        e.preventDefault(); 
+      }
     });
 
     $(window).resize(function () {

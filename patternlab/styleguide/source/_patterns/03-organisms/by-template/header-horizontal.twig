@@ -1,0 +1,45 @@
+<!-- Begin .header -->
+<header class="ma__header__horizontal" id="header">
+  {% if not header.hideBackTo %}
+    <div class="ma__header__horizontal__backto">
+      <a href="{{ header.backTo ? header.backTo.url : 'https://www.mass.gov' }}">{{ header.backTo ? header.backTo.text : 'Go to classic Mass.gov' }}</a>
+    </div>
+  {% endif %}
+  <a class="ma__header__horizontal__skip-nav" href="#main-content">skip to main content</a>
+  <div class="ma__header__horizontal__utility-nav ma__header__horizontal__utility-nav--wide">
+    {% include "@organisms/by-template/utility-nav.twig" %}
+  </div>
+  <div class="ma__header__horizontal__container">
+    <div class="ma__header__horizontal__logo">
+      {% include "@atoms/09-media/site-logo.twig" %}
+    </div>
+    {% if not hideHeaderSearch %}
+      <div class="ma__header__horizontal__search js-header-search-menu-horizontal">
+        {% include "@molecules/header-search.twig" %}
+      </div>
+    {% endif %}
+  </div>
+  <nav class="ma__header__horizontal__nav" aria-label="main navigation" id="main-navigation" role="navigation">
+    <div class="ma__header__horizontal__button-container js-sticky-header">
+      <button class="ma__header__horizontal__back-button js-close-sub-nav"><span>Back</span></button>
+      <button class="ma__header__horizontal__menu-button js-header-menu-horizontal-button">
+        <span>Menu</span><span class="ma__header__horizontal__menu-icon"></span>
+      </button>
+    </div>
+    <div class="ma__header__horizontal__nav-container">
+      {% if not hideHeaderSearch %}
+        <div class="ma__header__horizontal__nav-search">
+          {% set headerSearch = headerSearch|merge({'id':'nav-search'}) %}
+          {% include "@molecules/header-search.twig" %}
+        </div>
+      {% endif %}
+      <div class="ma__header__horizontal__main-nav js-utility-nav--wide">
+        {% include "@molecules/main-nav-horizontal.twig" %}
+      </div>
+      <div class="ma__header__horizontal__utility-nav ma__header__horizontal__utility-nav--narrow">
+        {% include "@organisms/by-template/utility-nav.twig" %}
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- end .header -->
