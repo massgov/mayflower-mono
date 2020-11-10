@@ -13,16 +13,17 @@ react_defaults: &react_defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:12.18.0-browsers
+  resource_class: xlarge
 patternlab_defaults: &patternlab_defaults
   working_directory: ~/code
   docker:
     - image: circleci/php:7.1-node-browsers
-
+  resource_class: xlarge
 backstop_defaults: &backstop_defaults
   working_directory: /home/circleci
   docker:
     - image: cimg/node:12.14
-
+  resource_class: xlarge
 jobs:
   build:
     <<: *patternlab_defaults
@@ -31,17 +32,35 @@ jobs:
       - restore_cache:
           name: Restore pnpm-lock.yaml
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
+      - run:
+          name: 'Build'
+          command: 'node common/scripts/install-run-rush.js build'
+      - persist_to_workspace:
+          root: ~/code
+          paths: ["*"]
+  install:
+    <<: *patternlab_defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore pnpm-lock.yaml
+          keys:
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run: {name: 'Install packages', command: 'node common/scripts/install-run-rush.js install'}
       - save_cache:
           name: Save NPM cache
-          key: root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+          key: root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
           paths:
             - common
             - packages/assets/node_modules
+            - packages/assets/.rush
             - packages/react/node_modules
+            - packages/react/.rush
             - packages/patternlab/styleguide/node_modules
+            - packages/patternlab/styleguide/.rush
             - packages/site/node_modules
+            - packages/site/.rush
 
   patternlab_build:
     <<: *patternlab_defaults
@@ -50,7 +69,7 @@ jobs:
       - restore_cache:
           name: Restore NPM Cache
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run: { name: 'Build', command: 'cd packages/patternlab/styleguide && node ../../../common/scripts/install-run-rushx.js build'}
       - persist_to_workspace:
           root: ~/code
@@ -169,12 +188,8 @@ jobs:
     <<: *patternlab_defaults
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
-      - run:
-          name: Mayflower React Build
-          command: cd packages/react && node ../../common/scripts/install-run-rushx.js build
+      - attach_workspace:
+          at: ~/code
       - run:
           name: Mayflower React Build Storybook
           command: cd packages/react && node ../../common/scripts/install-run-rushx.js build-storybook
@@ -262,7 +277,7 @@ jobs:
       - *no_host_check
       - restore_cache:
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run: sudo npm install -g js-yaml@3.13.1 @octokit/rest semver@6.3.0 shelljs@0.8.3 simple-git@1.126.0
       # Identify the committer i.e. CircleCI deployment bot
       - run: git config --global user.email "circleci@example.com"
@@ -276,7 +291,7 @@ jobs:
       - *no_host_check
       - restore_cache:
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run: sudo npm install -g js-yaml@3.13.1 @octokit/rest semver@6.3.0 shelljs@0.8.3 simple-git@1.126.0
       # Identify the committer i.e. CircleCI deployment bot
       - run: git config --global user.email "circleci@example.com"
@@ -290,7 +305,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run:
           name: Mayflower Style Linter
           command: cd packages/assets && node ../../common/scripts/install-run-rushx.js stylelint
@@ -302,7 +317,7 @@ jobs:
       - *configure_npm
       - restore_cache:
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run:
           name: 'Publish mayflower-assets NPM package'
           command: |
@@ -320,7 +335,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-11
+            - root-npm-v4-{{ checksum "common/config/rush/pnpm-lock.yaml" }}-13
       - run: cd packages/react && node ../../common/scripts/install-run-rushx.js build
       - run:
           name: Validate Package Build
@@ -355,25 +370,27 @@ workflows:
   # Executed on branch pushes.
   build_branch:
     jobs:
-      - build
+      - install
+      - build:
+          requires: [install]
       - auto_changelog:
           filters:
             branches: { only: /dependabot\/.*/ }
       - assets_build:
-          requires: [react_build_storybook]
+          requires: [install]
           filters:
             branches: { ignore: /(docs|site\/).*/ }
       # patternlab
-      - patternlab_build:
+      # - patternlab_build:
+      #     requires: [build]
+      #     filters:
+      #       branches: { ignore: /(docs|react\/|site\/).*/ }
+      - patternlab_deploy_branch:
           requires: [build]
           filters:
             branches: { ignore: /(docs|react\/|site\/).*/ }
-      - patternlab_deploy_branch:
-          requires: [patternlab_build]
-          filters:
-            branches: { ignore: /(docs|react\/|site\/).*/ }
       - patternlab_test:
-          requires: [patternlab_build]
+          requires: [build]
           filters:
             branches: { ignore: /(docs|react\/|site\/).*/ }
       # react
@@ -386,15 +403,17 @@ workflows:
           filters:
             branches: { ignore: /(docs|patternlab\/|site\/).*/ }
       # site
-      - site_build:
-          requires: [react_build_storybook]
-          filters:
-            branches: { ignore: /(docs|patternlab\/|react\/).*/ }
+      # - site_build:
+      #     requires: [react_build_storybook]
+      #     filters:
+      #       branches: { ignore: /(docs|patternlab\/|react\/).*/ }
 
   # Release branch automation every Monday at 2:00 p.m. ET "00 18 * * 1"
   release:
     jobs:
-      - build
+      - install
+      - build:
+          requires: [install]
       - release_branch:
           requires: [build]
     triggers:
@@ -407,7 +426,13 @@ workflows:
 
   build_github_tag:
     jobs:
+      - install:
+          filters:
+            branches:
+              only: master
       - build:
+          requires:
+            - install
           filters:
             branches:
               only: master
@@ -428,21 +453,27 @@ workflows:
   # Executed on tag pushes.
   build_tag:
     jobs:
-      - build:
+      - install:
           filters:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }
-      - patternlab_build:
+      - build:
+          requires: [install]
+          filters:
+            branches: { ignore: /.*/ }
+            tags: { only: /.*/ }
+      # - patternlab_build:
+      #     requires: [build]
+      #     filters:
+      #       branches: { ignore: /.*/ }
+      #       tags: { only: /.*/ }
+      - patternlab_deploy_tag:
           requires: [build]
           filters:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }
-      - patternlab_deploy_tag:
-          requires: [patternlab_build]
-          filters:
-            branches: { ignore: /.*/ }
-            tags: { only: /.*/ }
       - react_build_storybook:
+          requires: [build]
           filters:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }
@@ -452,17 +483,17 @@ workflows:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }
       - assets_deploy_tag:
-          requires: [react_build_storybook]
+          requires: [build]
           filters:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }
-      - site_build:
-          requires: [react_build_storybook]
-          filters:
-            branches: { ignore: /.*/ }
-            tags: { only: /.*/ }
+      # - site_build:
+      #     requires: [react_build_storybook]
+      #     filters:
+      #       branches: { ignore: /.*/ }
+      #       tags: { only: /.*/ }
       - site_deploy_tag:
-          requires: [site_build]
+          requires: [build]
           filters:
             branches: { ignore: /.*/ }
             tags: { only: /.*/ }

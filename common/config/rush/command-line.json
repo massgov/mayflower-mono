@@ -13,6 +13,14 @@
   "commands": [
     {
       "commandKind": "global",
+      "name": "build:react-storybook",
+      "summary": "Runs 'rushx build-storybook' for the react package.",
+      "safeForSimultaneousRushProcesses": true,
+      "allowWarningsInSuccessfulBuild": true,
+      "shellCommand": "cd packages/react && rushx build-storybook"
+    },
+    {
+      "commandKind": "global",
       "name": "start:react",
       "summary": "Runs 'rushx start' for the react package.",
       "safeForSimultaneousRushProcesses": true,
