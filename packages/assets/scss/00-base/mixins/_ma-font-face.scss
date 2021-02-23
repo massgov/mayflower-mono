@@ -17,8 +17,7 @@ $oneDash:		'-';
 	}
 	src:	url('#{$assets-path}#{$fonts-path}#{$script}/#{$family}#{$type}#{$script}#{$dash}#{$suffix}#{$oneDash}#{$weight}#{$subset}.woff2') format('woff2'),
 				url('#{$assets-path}#{$fonts-path}#{$script}/#{$family}#{$type}#{$script}#{$dash}#{$suffix}#{$oneDash}#{$weight}#{$subset}.woff') format('woff'),
-				// url('#{$assets-path}#{$fonts-path}#{$script}/#{$family}#{$type}#{$script}#{$dash}#{$suffix}#{$weight}#{$subset}.eot?#iefix') format('embedded-opentype'),
-				// url('#{$assets-path}#{$fonts-path}#{$script}/#{$family}#{$type}#{$script}#{$dash}#{$suffix}#{$weight}#{$subset}.svg') format('svg'),
+				// url('#{$assets-path}#{$fonts-path}#{$script}/#{$family}#{$type}#{$script}#{$dash}#{$suffix}#{$weight}#{$subset}.eot?#iefix') format('embedded-opentype')
 				;
 	font-weight: $fontWeight;
 	font-style: $fontStyle;

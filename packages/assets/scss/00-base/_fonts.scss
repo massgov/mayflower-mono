@@ -16,60 +16,84 @@
 
 /////////////////////////////////////
 // Import fonts
-/* The fallback non-variable Noto Sans font */
 
-@font-face {
+@font-face { // The fallback non-variable Noto Sans font
   font-family: 'Noto Sans';
-  src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
-        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular.woff2') format('woff2'),
-        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular.woff') format('woff');
+  src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular-subset.eot?#iefix') format('embedded-opentype'),
+        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular-subset.woff') format('woff'),
+				url('#{$assets-path}/fonts/noto/Latin/NotoSans-Regular-subset.woff2') format('woff2');
   font-style: normal;
   font-display: $fonts-display-global;
 }
-/* The fallback non-variable Noto Sans Italic font */
 
-@font-face {
+
+@font-face { // The fallback non-variable Noto Sans Italic font
   font-family: 'Noto Sans';
-  src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic.eot?#iefix') format('embedded-opentype'),
-        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic.woff2') format('woff2'),
-        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic.woff') format('woff');
+  src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic-subset.eot?#iefix') format('embedded-opentype'),
+        url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic-subset.woff') format('woff'),
+				url('#{$assets-path}/fonts/noto/Latin/NotoSans-Italic-subset.woff2') format('woff2');
   font-style: italic;
   font-display: $fonts-display-global;
 }
 
-@supports ( font-variation-settings: normal ) {
-  /* The variable font of Noto Sans */
+@font-face {
+	font-family: 'Noto Sans Mono';
+	src:  /*url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Regular-subset.eot?#iefix') format('embedded-opentype'),*/
+				url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Regular-subset.woff') format('woff'),
+				url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Regular-subset.woff2') format('woff2');
+	font-weight: $fonts-normal;
+	font-style: normal;
+	font-display: $fonts-display-global;
+}
 
-  @font-face {
+@font-face {
+	font-family: 'Noto Sans Mono';
+	src:  /*url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Bold-subset.eot?#iefix') format('embedded-opentype'),*/
+				url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Bold-subset.woff') format('woff'),
+				url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-Bold-subset.woff2') format('woff2');
+	font-weight: $fonts-bold;
+	font-style: normal;
+	font-display: $fonts-display-global;
+}
+
+@supports ( font-variation-settings: normal ) {
+
+	@font-face { // The variable font of Noto Sans for basic latin
     font-family: 'Noto Sans VF';
-    src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF.eot?#iefix') format('embedded-opentype'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF.woff2') format('woff2'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF.woff') format('woff'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF.ttf') format('truetype');
+    src:  url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF-subset.eot?#iefix') format('embedded-opentype'),
+          url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF-subset.woff') format('woff'),
+					url('#{$assets-path}/fonts/noto/Latin/NotoSans-VF-subset.woff2') format('woff2');
     font-weight: 100 900;
     font-style: normal;
     font-display: $fonts-display-global;
   }
-  /* The variable font of Noto Sans Italic */
 
-  @font-face {
+	@font-face { // The variable font of Noto Sans for latin extended
+    font-family: 'Noto Sans Latin VF';
+    src:  url('#{$assets-path}/fonts/noto/Latin-ext/NotoSans-VF.eot?#iefix') format('embedded-opentype'),
+          url('#{$assets-path}/fonts/noto/Latin-ext/NotoSans-VF.woff') format('woff')/*,
+					url('#{$assets-path}/fonts/noto/Latin-ext/NotoSans-VF.woff2') format('woff2')*/
+					;
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: $fonts-display-global;
+  }
+
+  @font-face { // The variable font of Noto Sans Italic
     font-family: 'Noto Sans VF';
-    src:  url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF.eot?#iefix') format('embedded-opentype'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF.woff2') format('woff2'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF.woff') format('woff'),
-          url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF.ttf') format('truetype');
+    src:  url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF-subset.eot?#iefix') format('embedded-opentype'),
+          url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF-subset.woff') format('woff'),
+					url('#{$assets-path}/fonts/noto/Latin/NotoSansItalic-VF-subset.woff2') format('woff2');
     font-weight: 100 900;
     font-style: italic;
     font-display: $fonts-display-global;
   }
-  /* The variable font of Noto Sans Mono */
 
-  @font-face {
+  @font-face {    // The variable font of Noto Sans Mono
     font-family: 'Noto Sans Mono VF';
-    src:  url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF.woff') format('woff'),
-          url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF.eot?#iefix') format('embedded-opentype'),
-          url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF.ttf') format('truetype'),
-          url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF.svg#NotoSans-Mono') format('svg');
+    src:  url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF-subset.eot?#iefix') format('embedded-opentype'),
+					url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF-subset.woff') format('woff'),
+					url('#{$assets-path}/fonts/noto/Mono/NotoSansMono-VF-subset.woff2') format('woff2');
     font-weight: 100 900;
     font-style: normal;
     font-display: $fonts-display-global;
@@ -86,85 +110,200 @@
    );
 */
 
-@if $fonts-langs-support {
+@if $fonts-langs-support { // all variable fonts
 
   @supports ( font-variation-settings: normal ) {
 
-    @font-face {
+		@font-face { // Arabic VF
 
       @include ma-font-face(Noto, Sans, Arabic, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$arabic, null, null);
     }
+
+		@font-face { // Armeneian VF
+
+      @include ma-font-face(Noto, Sans, Armenian, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$armenian, null, null);
+    }
+
+		@font-face { // Cyrillic VF
+
+			@include ma-font-face(Noto, Sans, Cyrillic, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$cyrillic, null, null);
+		}
+
+		@font-face { // Devanagari VF
+
+			@include ma-font-face(Noto, Sans, Devanagari, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$devanagari, null, null);
+		}
+
+		@font-face { // Greek VF
+
+			@include ma-font-face(Noto, Sans, Greek, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$greek, null, null);
+		}
+
+		@font-face { // Hebrew VF
+
+      @include ma-font-face(Noto, Sans, Hebrew, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$hebrew, null, null);
+    }
+
+		@font-face { // Khmer VF
+
+			@include ma-font-face(Noto, Sans, Khmer, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$khmer, null, null);
+		}
+
+		@font-face { // Lao VF
+
+			@include ma-font-face(Noto, Sans, Lao, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$lao, null, null);
+		}
+
+		/*
+    @font-face { // Malayalam VF
+
+      @include ma-font-face(Noto, Sans, Malayalam, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$malayalam, null, null);
+    }*/
+
+    @font-face { // Myanmar VF
+
+      @include ma-font-face(Noto, Sans, Myanmar, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$myanmar, null, null);
+    }
+
+    @font-face { // Tamil VF
+
+      @include ma-font-face(Noto, Sans, Tamil, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$tamil, null, null);
+    }
+
+    @font-face { // Telugu VF
+
+      @include ma-font-face(Noto, Sans, Telugu, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$telugu, null, null);
+    }
+
+    @font-face { // Thai VF
+
+      @include ma-font-face(Noto, Sans, Thai, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$thai, null, null);
+    }
   }
 
-  @font-face {
+	// All non-variable fonts
+
+  @font-face { // Arabic bold
 
     @include ma-font-face(Noto, Sans, Arabic, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$arabic, null, null);
   }
 
-  @font-face {
+  @font-face { // Arabic regular
 
     @include ma-font-face(Noto, Sans, Arabic, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$arabic, null, null);
   }
 
-  // Hebrew
+	@font-face { // Cyrillic bold
 
-  @supports ( font-variation-settings: normal ) {
+		@include ma-font-face(Noto, Sans, Cyrillic, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$cyrillic, null, null);
+	}
 
-    @font-face {
+	@font-face { // Cyrillic regular
 
-      @include ma-font-face(Noto, Sans, Hebrew, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$hebrew, null, null);
-    }
-  }
+		@include ma-font-face(Noto, Sans, Cyrillic, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$cyrillic, null, null);
+	}
 
-  @font-face {
+	@font-face { // Devanagari bold
+
+		@include ma-font-face(Noto, Sans, Devanagari, null, Bold, -subset, $fonts-normal, normal, $fonts-display-global, langs.$devanagari, null, null);
+	}
+
+	@font-face { // Devanagari regular
+
+		@include ma-font-face(Noto, Sans, Devanagari, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$devanagari, null, null);
+	}
+
+	@font-face { // Greek bold
+
+		@include ma-font-face(Noto, Sans, Greek, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$greek, null, null);
+	}
+
+	@font-face { // Greek regular
+
+		@include ma-font-face(Noto, Sans, Greek, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$greek, null, null);
+	}
+
+	@font-face { // Gujarati bold
+
+		@include ma-font-face(Noto, Sans, Gujarati, null, Bold, -subset, $fonts-normal, normal, $fonts-display-global, langs.$gujarati, null, null);
+	}
+
+	@font-face { // Gujarati regular
+
+		@include ma-font-face(Noto, Sans, Gujarati, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$gujarati, null, null);
+	}
+
+  @font-face { // Hebrew bold
 
     @include ma-font-face(Noto, Sans, Hebrew, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$hebrew, null, null);
   }
 
-  @font-face {
+  @font-face { // Hebrew regular
 
     @include ma-font-face(Noto, Sans, Hebrew, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$hebrew, null, null);
   }
 
-  // Khmer
-
-  @supports ( font-variation-settings: normal ) {
-
-    @font-face {
-
-      @include ma-font-face(Noto, Sans, Khmer, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$khmer, null, null);
-    }
-  }
-
-  @font-face {
+  @font-face { // Khmer bold
 
     @include ma-font-face(Noto, Sans, Khmer, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$khmer, null, null);
   }
 
-  @font-face {
+  @font-face { // Khmer regular
 
     @include ma-font-face(Noto, Sans, Khmer, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$khmer, null, null);
   }
 
-  // Myanmar
+	/* Malayalam bold
+	@font-face {
 
-  @supports ( font-variation-settings: normal ) {
+		@include ma-font-face(Noto, Sans, Malayalam, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$malayalam, null, null);
+	}
 
-    @font-face {
-
-      @include ma-font-face(Noto, Sans, Myanmar, null, VF, -subset, 100 900, normal, $fonts-display-global, langs.$myanmar, null, null);
-    }
-  }
-
+	// Malayalam regular
   @font-face {
+
+    @include ma-font-face(Noto, Sans, Malayalam, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$malayalam, null, null);
+  }*/
+
+  @font-face { // Myanmar bold
 
     @include ma-font-face(Noto, Sans, Myanmar, null, Bold, -subset, $fonts-bold, normal, $fonts-display-global, langs.$myanmar, null, null);
   }
 
-  @font-face {
+  @font-face { // Myanmar regular
 
     @include ma-font-face(Noto, Sans, Myanmar, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$myanmar, null, null);
   }
+
+	@font-face { // Tamil bold
+
+		@include ma-font-face(Noto, Sans, Tamil, null, Bold, -subset, $fonts-normal, normal, $fonts-display-global, langs.$tamil, null, null);
+	}
+
+	@font-face { // Tamil regular
+
+		@include ma-font-face(Noto, Sans, Tamil, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$tamil, null, null);
+	}
+
+	@font-face { // Telugu bold
+
+		@include ma-font-face(Noto, Sans, Telugu, null, Bold, -subset, $fonts-normal, normal, $fonts-display-global, langs.$telugu, null, null);
+	}
+
+	@font-face {  // Telugu regular
+
+		@include ma-font-face(Noto, Sans, Telugu, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$telugu, null, null);
+	}
+
+	@font-face { // Thai bold
+
+		@include ma-font-face(Noto, Sans, Thai, null, Bold, -subset, $fonts-normal, normal, $fonts-display-global, langs.$thai, null, null);
+	}
+
+	@font-face { // Thai regular
+
+		@include ma-font-face(Noto, Sans, Thai, null, Regular, -subset, $fonts-normal, normal, $fonts-display-global, langs.$thai, null, null);
+	}
 }
 
 
@@ -180,23 +319,74 @@ html {
 
 @if $fonts-langs-support {
 
-  * {
+  * { // Arabic
 
     @include ma-langlist(langs.$arabic-sans, rtl, langs.$langs-Arab);
   }
 
-  * {
+  * { // Armenian
+
+    @include ma-langlist(langs.$armenian-sans, null, langs.$langs-Armn);
+  }
+
+	* { // Cyrillic
+
+    @include ma-langlist(langs.$cyrillic-sans, null, langs.$langs-Cyrl);
+  }
+
+	* { // Devanagari (Hindi)
+
+    @include ma-langlist(langs.$devanagari-sans, null, langs.$langs-Deva);
+  }
+
+	* { // Greek
+
+    @include ma-langlist(langs.$greek-sans, null, langs.$langs-Grek);
+  }
+
+  * { // Hebrew
 
     @include ma-langlist(langs.$hebrew-sans, rtl, langs.$langs-Hebr);
   }
 
-  * {
+  * { // Khmer
 
     @include ma-langlist(langs.$khmer-sans, null, langs.$langs-Khmr);
   }
 
-  * {
+  * { // Lao
+
+    @include ma-langlist(langs.$lao-sans, null, langs.$langs-Lao);
+  }
+
+  * { 	// Latin (non-english)
+
+    @include ma-langlist(langs.$latin-sans-ext, null, langs.$langs-Latn);
+  }
+
+	/*
+  * { // Malayalam
+
+    @include ma-langlist(langs.$malayalam-sans, null, langs.$langs-Mlym);
+  }*/
+
+  * { // Myanmar
 
     @include ma-langlist(langs.$myanmar-sans, null, langs.$langs-Mymr);
   }
+
+  * {	// Tamil
+
+    @include ma-langlist(langs.$tamil-sans, null, langs.$langs-Taml);
+  }
+
+  * { // Telugu
+
+    @include ma-langlist(langs.$telugu-sans, null, langs.$langs-Telu);
+  }
+
+	* { // Thai
+
+		@include ma-langlist(langs.$thai-sans, null, langs.$langs-Thai);
+	}
 }

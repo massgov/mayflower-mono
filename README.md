@@ -12,7 +12,6 @@ Mayflower is the enterprise design system for the Commonwealth of Massachusetts.
 
 This project is licensed under the is licensed under the GNU General Public License v2.0 - see the [LICENSE.txt](LICENSE.txt) file for details.
 
-
 [patternlab-github-badge]: https://badge.fury.io/gh/massgov%2Fmayflower.svg
 [react-npm-badge]: https://img.shields.io/npm/v/@massds/mayflower-react.png
 [npm]: https://www.npmjs.com/package/@massds/mayflower-react
@@ -21,6 +20,7 @@ This project is licensed under the is licensed under the GNU General Public Lice
 This monorepo is managed using [Rush](https://rushjs.io/) and [PNPM](https://pnpm.js.org/).
 #### Getting Started on Development
 To get started, install rush globally by running the following command:
+
 ```
 npm install -g @microsoft/rush
 ```

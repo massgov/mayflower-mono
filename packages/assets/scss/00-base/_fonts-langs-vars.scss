@@ -31,8 +31,9 @@ $japanese:				U+A5, U+4E00-9FFF, U+30??, U+FF00-FF9F; // Kanji, Hiragana, Kataka
 $kannada:					U+0C80-0CFF;
 $kayah:						U+A900-A92F;
 $khmer:						U+1780-17FF, U+19E0-19FF; // Khmer and symbols
-$lao:							U+0E80-0EFF;
-$latin:						U+????;
+$lao:							U+????; // U+0E80-0EFF;
+$latin:						U+0020-007E, U+00A0-00FF, U+FB00-FB05, U+2013-2014, U+2018-2019, U+2026, U+201C-201D, U+20AC;
+// Basic latin, supplemeent, ligatures, single and double quotes, ellipsis, em dash and euro symbol
 $limbu:						U+1900-194F;
 $lisu:						U+A4D0-A4FF;
 $malayalam:				U+0D00-0D7F;
@@ -57,7 +58,7 @@ $thai:						U+0E00-0E7F;
 $tibetan:					U+0F00-0FFF;
 $warang-citi:			U+118A0-118FF;
 $zanabazar:				U+11A00-11A4F;
-$lgc: 						U+0000-00FF, U+0100-017F, U+0180-024F, U+0370-03FF, U+0259-03C0, U+1E00-1EFF, U+2000-FB02, U+1F00-1FFF, U+0400-04FF, U+0500-052F, U+1C80-1C8F;
+$Latin-ext:				U+0100-017F, U+0180-024F, U+1E00-1EFF; // extended A, B, additional
 
 
 
@@ -126,7 +127,7 @@ $langs-Kore: "ko", "Kore" !default;
 // Lao
 $langs-Lao: "lo", "Lao" !default;
 // Latin
-$langs-Latn: "ay", "bi", "ca", "ch", "cs", "da", "de", "en", "eo", "es", "et", "fi", "fil", "fj", "fo", "fr", "ga", "gil", "gn", "gsw", "gv", "ho", "hr", "ht", "hu", "in", "is", "it", "kl", "lb", "lt", "lv", "mg", "mh", "mi", "mt", "na", "nb", "nd", "niu", "nl", "nn", "no", "ny", "pap", "pau", "pl", "pt", "qu", "rn", "rw", "sg", "sk", "sl", "sm", "sn", "sq", "ss", "st", "sv", "sw", "tet", "tkl", "tl", "tn", "to", "tpi", "tr", "tvl", "ty", "yo", "aa", "abr", "ace", "ach", "ada", "af", "agq", "ak", "akz", "ale", "aln", "amo", "an", "aoz", "arn", "aro", "arp", "arw", "asa", "ast", "atj", "bar", "bas", "bbj", "bci", "bem", "bew", "bez", "bfd", "bik", "bin", "bjn", "bkm", "bku", "bla", "bmq", "bqv", "br", "bss", "bto", "buc", "bug", "bum", "bvb", "byv", "bze", "bzx", "cad", "car", "cay", "cch", "ceb", "cgg", "chk", "chn", "cho", "chy", "cic", "co", "cps", "crj", "crl", "crs", "csb", "ctd", "cy", "dak", "dav", "del", "dgr", "din", "dje", "dnj", "dsb", "dtm", "dtp", "dua", "dyu", "ebu", "ee", "efi", "egl", "eka", "esu", "eu", "ewo", "ext", "fan", "ffm", "fit", "fon", "frc", "frp", "frr", "frs", "fud", "fuq", "fur", "fuv", "fvr", "fy", "gaa", "gay", "gba", "gcr", "gd", "gl", "gor", "gos", "grb", "gub", "guc", "gur", "guz", "gwi", "hai", "haw", "hil", "hmn", "hnn", "hop", "hsb", "hup", "hz", "iba", "ibb", "ife", "ig", "ik", "ikt", "ilo", "izh", "jam", "jgo", "jmc", "kab", "kac", "kaj", "kam", "kao", "kcg", "kck", "kde", "kea", "kfo", "kg", "kge", "kgp", "khq", "ki", "kiu", "kj", "kkj", "kln", "kmb", "kos", "kpe", "kr", "kri", "krj", "krl", "ksb", "ksf", "ksh", "kut", "kvr", "kw", "lag", "laj", "lam", "lbw", "li", "lij", "liv", "lkt", "lmo", "mad", "rtm", "tiv", "tmh", "tog", "trv", "ts", "tsg", "tsi", "ttj", "tum", "twq", "uli", "umb", "ve", "vec", "vep", "vic", "vls", "vmf", "vmw", "vot", "vro", "vun", "wa", "wae", "war", "was", "wbp", "wls", "xav", "xh", "xog", "yao", "yap", "yav", "ybb", "yrl", "yua", "zag", "zap", "zea", "zmi", "zu", "zun", "zza", "ro-Latn", "sr-Latn", "gag-Latn", "bs-Latn", "rom-Latn", "se-Latn", "tkr-Latn", "udm-Latn", "hi-Latn", "hif-Latn", "ks-Latn", "sd-Latn", "ar-Latn", "bal-Latn", "brh-Latn", "dyo-Latn", "ha-Latn", "id-Latn", "ms-Latn", "so-Latn", "sus-Latn", "swb-Latn", "tr-Latn", "tru-Latn", "wo-Latn","aii-Latn", "az-Latn", "inh-Latn", "ky-Latn", "kk-Latn", "ku-Latn", "tg-Latn", "tk-Latn", "tly-Latn", "ttt-Latn", "ug-Latn", "uz-Latn", "Latn" !default;
+$langs-Latn: "ay", "bi", "ca", "ch", "cs", "da", "de", "eo", "es", "et", "fi", "fil", "fj", "fo", "fr", "ga", "gil", "gn", "gsw", "gv", "ho", "hr", "ht", "hu", "in", "is", "it", "kl", "lb", "lt", "lv", "mg", "mh", "mi", "mt", "na", "nb", "nd", "niu", "nl", "nn", "no", "ny", "pap", "pau", "pl", "pt", "qu", "rn", "rw", "sg", "sk", "sl", "sm", "sn", "sq", "ss", "st", "sv", "sw", "tet", "tkl", "tl", "tn", "to", "tpi", "tr", "tvl", "ty", "yo", "aa", "abr", "ace", "ach", "ada", "af", "agq", "ak", "akz", "ale", "aln", "amo", "an", "aoz", "arn", "aro", "arp", "arw", "asa", "ast", "atj", "bar", "bas", "bbj", "bci", "bem", "bew", "bez", "bfd", "bik", "bin", "bjn", "bkm", "bku", "bla", "bmq", "bqv", "br", "bss", "bto", "buc", "bug", "bum", "bvb", "byv", "bze", "bzx", "cad", "car", "cay", "cch", "ceb", "cgg", "chk", "chn", "cho", "chy", "cic", "co", "cps", "crj", "crl", "crs", "csb", "ctd", "cy", "dak", "dav", "del", "dgr", "din", "dje", "dnj", "dsb", "dtm", "dtp", "dua", "dyu", "ebu", "ee", "efi", "egl", "eka", "esu", "eu", "ewo", "ext", "fan", "ffm", "fit", "fon", "frc", "frp", "frr", "frs", "fud", "fuq", "fur", "fuv", "fvr", "fy", "gaa", "gay", "gba", "gcr", "gd", "gl", "gor", "gos", "grb", "gub", "guc", "gur", "guz", "gwi", "hai", "haw", "hil", "hmn", "hnn", "hop", "hsb", "hup", "hz", "iba", "ibb", "ife", "ig", "ik", "ikt", "ilo", "izh", "jam", "jgo", "jmc", "kab", "kac", "kaj", "kam", "kao", "kcg", "kck", "kde", "kea", "kfo", "kg", "kge", "kgp", "khq", "ki", "kiu", "kj", "kkj", "kln", "kmb", "kos", "kpe", "kr", "kri", "krj", "krl", "ksb", "ksf", "ksh", "kut", "kvr", "kw", "lag", "laj", "lam", "lbw", "li", "lij", "liv", "lkt", "lmo", "mad", "rtm", "tiv", "tmh", "tog", "trv", "ts", "tsg", "tsi", "ttj", "tum", "twq", "uli", "umb", "ve", "vec", "vep", "vi", "vic", "vls", "vmf", "vmw", "vot", "vro", "vun", "wa", "wae", "war", "was", "wbp", "wls", "xav", "xh", "xog", "yao", "yap", "yav", "ybb", "yrl", "yua", "zag", "zap", "zea", "zmi", "zu", "zun", "zza", "ro-Latn", "sr-Latn", "gag-Latn", "bs-Latn", "rom-Latn", "se-Latn", "tkr-Latn", "udm-Latn", "hi-Latn", "hif-Latn", "ks-Latn", "sd-Latn", "ar-Latn", "bal-Latn", "brh-Latn", "dyo-Latn", "ha-Latn", "id-Latn", "ms-Latn", "so-Latn", "sus-Latn", "swb-Latn", "tr-Latn", "tru-Latn", "wo-Latn","aii-Latn", "az-Latn", "inh-Latn", "ky-Latn", "kk-Latn", "ku-Latn", "tg-Latn", "tk-Latn", "tly-Latn", "ttt-Latn", "ug-Latn", "uz-Latn", "Latn" !default;
 // Limbu
 $langs-Limb: "lif", "Limb" !default;
 // Lisu
@@ -186,11 +187,11 @@ $cham-sans:							'Noto Sans Cham';									// Static + VF
 $cherokee-sans:					'Noto Sans Cherokee';							// Static + VF
 $chinese-s-sans:				'Noto Sans SC'; 									// Static - Simplified Chinese
 $chinese-t-sans:				'Noto Sans TC'; 									// Static - Traditional Chinese
-$cyrillic-sans:					'Noto Sans LGC'; 									// Static + VF 	latin, greek cyrillic
+$cyrillic-sans:					'Noto Sans Cyrillic'; 									// Static + VF 	latin, greek cyrillic
 $devanagari-sans:				'Noto Sans Devanagari';						// Static + VF
 $georgian-sans:					'Noto Sans Georgian';							// Static + VF
 $grantha-sans:					'Noto Sans Grantha';							// Static + VF
-$greek-sans:						'Noto Sans LGC'; 									// Static + VF 	latin, greek, cyrillic
+$greek-sans:						'Noto Sans Greek'; 									// Static + VF 	latin, greek, cyrillic
 $gujarati-sans:					'Noto Sans Gujarati';							// Static + VF
 $gurmukhi-sans:					'Noto Sans Gurmukhi';							// Static + VF
 $hanifi-rohingya-sans:	'Noto Sans Hanifi Rohingya';			// Static + VF
@@ -201,7 +202,7 @@ $kannada-sans:					'Noto Sans Kannada';							// Static + VF
 $kayah-sans:						'Noto Sans Kayah';								// Static + VF
 $khmer-sans:						'Noto Sans Khmer';								// Static + VF
 $korean-sans:						'Noto Sans KR';										// Static - Korean
-$latin-sans:						'Noto Sans Latin'; 								// Static + VF
+$latin-sans-ext:				'Noto Sans Latin'; 								// Static + VF
 $lao-sans:							'Noto Sans Lao';									// Static + VF
 $limbu-sans:						'Noto Sans Limbu';								// Static + VF
 $lisu-sans:							'Noto Sans Lisu';									// Static + VF

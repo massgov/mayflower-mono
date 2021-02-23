@@ -19,11 +19,6 @@ const coloredHeading = (
       level="2"
       text="Colored Heading (Primary Alt)"
     />
-    <ColoredHeading
-      color="gray"
-      level="2"
-      text="Colored Heading (Gray)"
-    />
   </>
 );
 

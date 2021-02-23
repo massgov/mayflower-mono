@@ -1,0 +1,185 @@
+
+@use "00-base/configure" as *;
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1em !important;
+  margin-bottom: 0.2em !important;
+}
+
+hr {
+  border: 1px solid $c-gray-light;
+	margin: 2rem 0;
+}
+
+small,
+sup {
+	font-size: $fonts-small;
+}
+
+details {
+  display: block;
+
+	summary {
+		cursor: pointer;
+	  display: list-item;
+	}
+}
+
+strong {
+  font-weight: 600;
+}
+
+table {
+	min-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+table td,
+table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+blockquote,
+details,
+dl,
+ol,
+p,
+pre,
+table,
+ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+blockquote {
+	margin: 0;
+  padding: 0 1em;
+  border-left: .25em solid $c-gray-light;
+
+	&>:first-child {
+  	margin-top: 0;
+	}
+
+	&>:last-child {
+	  margin-bottom: 0;
+	}
+}
+
+dd {
+  margin-left: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+img {
+  border-style: none;
+
+	&[align=right] {
+	  padding-left: 20px;
+	}
+
+	&[align=left] {
+	  padding-right: 20px;
+	}
+}
+
+code,
+kbd,
+pre {
+  font-size: 1em;
+}
+
+code,
+pre {
+	margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Noto Sans Mono VF", "Noto Sans Mono", monospace !important;
+	font-size: 12px;
+}
+
+code {
+  padding: .2em .4em;
+  margin-left: 0;
+	margin-right: 0;
+  font-size: 85%;
+  background-color: $c-gray-lightest;
+  border-radius: 3px;
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.highlight pre,
+pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: $c-gray-lightest;
+  border-radius: 3px;
+}
+
+pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}

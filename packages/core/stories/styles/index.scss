@@ -17,7 +17,6 @@
 @use '@massds/mayflower-react/dist/SectionLinks';
 
 @use '@massds/mayflower-assets/scss/01-atoms/button-copy';
-@use '@massds/mayflower-react/dist/Typography';
 
 @use '@massds/mayflower-react/dist/Button';
 @use '@massds/mayflower-assets/scss/01-atoms/button-with-icon';
@@ -60,7 +59,12 @@
 @use '@massds/mayflower-assets/scss/00-base/layout';
 @use '@massds/mayflower-assets/scss/01-atoms/place-holder';
 
-// Global
+
+// Tables
+table.sbdocs.sbdocs-table {
+  min-width: 100%;
+}
+
 .sp {
   &--top {
     margin-top: 2rem;
@@ -167,4 +171,49 @@ p.lang-label {
 	margin-block-start: 0;
   margin-block-end: 0;
   margin: 0 !important;
+}
+
+.sb {
+  &-text {
+    overflow-wrap: break-word;
+  }
+
+  &-block {
+    margin-top: 0 !important;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid $c-gray-lightest;
+
+    hr {
+      color: $c-gray-lightest;
+    }
+
+    &--mono {
+      font-family: $fonts-mono;
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 300px auto;
+    @media ($bp-small-max){
+      grid-template-columns: auto;
+    }
+  }
+}
+
+// Show only the control column for custom preview controls
+#sb-control--preview {
+  .docblock-argstable {
+    thead,tbody {
+      tr{
+        th,td:not(:last-child) {
+          display: none;
+        }
+        textarea {
+          font-size: $fonts-medium;
+        }
+      }
+    }
+  }
 }
