@@ -50,5 +50,5 @@
 
 ## Acknowledgments
 
-This project was bootstrapped with [HackerThemes](https://hacekrthemes.com).
+This project was bootstrapped with [HackerThemes](https://hackerthemes.com).
 
