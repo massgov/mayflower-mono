@@ -4,28 +4,32 @@
       "arrowButton": {
         "href": "#",
         "info": "",
-        "direction": "left"
+        "direction": "left",
+        "ariaHidden": ""
       },
       "label": "Previous Section",
       "title": "previous page's title",
       "link": {
         "href": "#",
-        "text": "Page description from the previous page to this one",
-        "info": ""
+        "text": "previous page's title",
+        "info": "",
+        "ariaLabel": "Previous page, Page description from the previous page to this one"
       }
     },
     "next": {
       "arrowButton": {
         "href": "#",
         "info": "",
-        "direction": "right"
+        "direction": "right",
+        "ariaHidden": ""
       },
       "label": "Next Section",
       "title": "next page's title",
       "link": {
         "href": "#",
-        "text": "Page description from the next page to this one",
-        "info": ""
+        "text": "next page's title",
+        "info": "",
+        "ariaLabel": "Next page, next page's title"
       }
     }
   }

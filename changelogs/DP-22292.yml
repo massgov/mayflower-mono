@@ -1,0 +1,12 @@
+Changed:
+  - project: Patternlab
+    component: PageFlipper
+    description: Hide duplicate links in the component from assistive technology and keyboard users. (#1433)
+    issue: DP-22292
+    impact: Patch
+  - project: Patternlab
+    component: TableOfContentsOverlay
+    description: Set up keeping focus in the overaly while it's open. (#1433)
+    issue: DP-22292
+    impact: Patch
+    

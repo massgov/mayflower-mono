@@ -35,6 +35,7 @@ import mapLeaflet from "./modules/mapLeaflet.js";
 import mobileNav from "./modules/mobileNav.js";
 import orgSelector from "./modules/orgSelector.js";
 import organizationNavigation from "./modules/organizationNavigation.js";
+import pageFlipper from "./modules/pageFlipper.js";
 import pagination from "./modules/pagination.js";
 import pikaday from "./modules/pikaday.js";
 import preventHorizontalListWidows from "./modules/preventHorizontalListWidows.js";

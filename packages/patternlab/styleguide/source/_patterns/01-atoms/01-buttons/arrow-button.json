@@ -2,6 +2,7 @@
   "arrowButton": {
     "href": "#",
     "info": "Navigation to previous page",
-    "direction": "left"
+    "direction": "left",
+    "ariaHidden": false
   }
 }

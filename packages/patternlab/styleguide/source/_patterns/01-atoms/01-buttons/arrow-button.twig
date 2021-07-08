@@ -1,8 +1,6 @@
 {% set classDirection = arrowButton.direction ? "ma__arrow-button--" ~ arrowButton.direction : "" %}
-<a 
-  class="ma__arrow-button {{ classDirection }}" 
-  href="{{ arrowButton.href }}" 
-  title="{{ arrowButton.info }}"></a>
-
-
- 
+<a
+  class="ma__arrow-button {{ classDirection }}"
+  href="{{ arrowButton.href }}"
+  {% if arrowButton.info %} aria-label="{{ arrowButton.info }}"{% endif %}
+  {% if arrowButton.ariaHidden %} aria-hidden="true" tabindex="-1"{% endif %}></a>

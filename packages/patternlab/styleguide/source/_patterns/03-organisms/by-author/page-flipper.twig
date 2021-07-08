@@ -1,24 +1,23 @@
-<div class="ma__page-flipper">
+<nav class="ma__page-flipper" aria-label="pagenation">
   {% if pageFlipper.context %}
   <div class="ma__page-flipper__context">
-    <span class="ma__page-flipper__context-label">{{pageFlipper.context.label}}</span>
+    <span class="ma__page-flipper__context-label" aria-hidden="true">{{pageFlipper.context.label}}</span>
     {% set decorativeLink = pageFlipper.context.link %}
     {% include "@atoms/decorative-link.twig" %}
   </div>
   {% endif %}
-  <div class="ma__page-flipper__container">
-    {% if pageFlipper.prev %}
-      {% set arrowNav = pageFlipper.prev %}
-      {% include "@molecules/arrow-nav.twig" %}
-    {% else %}
-      <div class="ma__page-flipper__blank">&nbsp;</div>
-    {% endif %}
-    {% if pageFlipper.next %}
-      {% set arrowNav = pageFlipper.next %}
-      {% include "@molecules/arrow-nav.twig" %}
-    {% else %}
-      <div class="ma__page-flipper__blank">&nbsp;</div>
-    {% endif %}
+  <ul class="ma__page-flipper__container">
+  {% if pageFlipper.prev %}
+    {% set arrowNav = pageFlipper.prev %}
+    {% include "@molecules/arrow-nav.twig" %}
+  {% else %}
+    <li class="ma__page-flipper__blank"><span class="ma__visually-hidden">No previous page.</span></li>
+  {% endif %}
+  {% if pageFlipper.next %}
+    {% set arrowNav = pageFlipper.next %}
+    {% include "@molecules/arrow-nav.twig" %}
+  {% else %}
+<li class="ma__page-flipper__blank"><span class="ma__visually-hidden">No next page.</span></li>
+  {% endif %}
   </div>
-</div>
-
+</nav>

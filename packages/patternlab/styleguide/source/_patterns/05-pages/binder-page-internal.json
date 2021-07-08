@@ -213,35 +213,40 @@
           "link": {
             "href": "#",
             "info": "",
-            "text": "Rules of Criminal Procedure"
+            "text": "Rules of Criminal Procedure",
+            "ariaLabel": "This page is part of Rules of Criminal Procedure category."
           }
         },
         "prev": {
           "arrowButton": {
             "href": "#",
-            "info": "",
-            "direction": "left"
+            "info": "Previous page, Rule 99: A Rule About Something",
+            "direction": "left",
+            "ariaHidden": true
           },
           "label": "Previous",
           "title": "",
           "link": {
             "href": "#",
             "text": "Rule 99: A Rule About Something",
-            "info": ""
+            "info": "",
+            "ariaLabel": "Previous page, Rule 99: A Rule About Something"
           }
         },
         "next": {
           "arrowButton": {
             "href": "#",
-            "info": "",
-            "direction": "right"
+            "info": "Next page, Rule 101: A Rule About Something",
+            "direction": "right",
+            "ariaHidden": true
           },
           "label": "Next",
           "title": "",
           "link": {
             "href": "#",
             "text": "Rule 101: A Rule About Something",
-            "info": ""
+            "info": "",
+            "ariaLabel": "Next page, Rule 101: A Rule About Something"
           }
         }
       }

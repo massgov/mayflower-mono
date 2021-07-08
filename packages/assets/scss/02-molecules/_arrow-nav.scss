@@ -5,6 +5,7 @@
   padding-left: 40px;
   position: relative;
   cursor: pointer;
+  list-style: none;
 
   @media ($bp-small-max) {
     display: flex;
@@ -71,7 +72,7 @@
 
     @media ($bp-small-max) {
 
-      @include ma-visually-hidden;
+      display: none;
     }
   }
 

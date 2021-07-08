@@ -3,7 +3,8 @@
     "arrowButton": {
       "href": "#",
       "info": "",
-      "direction": "left"
+      "direction": "left",
+      "ariaHidden": ""
     },
     "label": "Previous Section",
     "title": "previous page's title",
