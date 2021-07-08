@@ -73,17 +73,6 @@ class DistRegistry extends DefaultRegistry {
         });
         js.watchFiles = sources.jsWatch;
 
-        taker.task("dist:build", taker.series(clean, taker.parallel(
-            css,
-            js,
-            assets
-        )));
-        taker.task("dist:watch", taker.series("dist:build", task("watcher", function() {
-            taker.watch(css.watchFiles, css);
-            taker.watch(js.watchFiles, js);
-            taker.watch(assets.watchFiles, assets);
-        })));
-
         const cleanPatterns = task('patternlab:clean-patterns', function() {
             return del(self.resolvePatternlab('patterns'))
         })
@@ -92,6 +81,9 @@ class DistRegistry extends DefaultRegistry {
                 console.error('ERROR: ', err);
             });
         }));
+        const copyPatterns = task("assets", function() {
+           return gulp.src(sources.patterns).pipe(filter("**/*.twig")).pipe(gulp.dest(self.resolveDist("twig")))
+        });
         patterns.watchFiles = sources.patterns;
 
         const copyDist = task("dist:copy", function() {
@@ -99,7 +91,24 @@ class DistRegistry extends DefaultRegistry {
                 .pipe(gulp.dest(self.resolvePatternlab()));
         });
 
-        taker.task("patternlab:build", taker.series("dist:build", copyDist, patterns ));
+        console.log('!!!!!!!!')
+        console.log(js.watchFiles)
+        console.log(patterns.watchFiles)
+
+        taker.task("dist:build", taker.series(clean, taker.parallel(
+            css,
+            js,
+            assets,
+            copyPatterns
+        )));
+        taker.task("dist:watch", taker.series("dist:build", task("watcher", function() {
+            taker.watch(css.watchFiles, css);
+            taker.watch(js.watchFiles, js);
+            taker.watch(assets.watchFiles, assets);
+            taker.watch(patterns.watchFiles, copyPatterns);
+        })));
+
+        taker.task("patternlab:build", taker.series("dist:watch", copyDist, patterns ));
         taker.task("patternlab:serve", taker.series("patternlab:build", task("server", () => {
             const sync = browserSync.create();
             sync.init({
@@ -118,7 +127,7 @@ class DistRegistry extends DefaultRegistry {
             taker.watch(css.watchFiles, gulp.series(css, copyAndReload));
             taker.watch(js.watchFiles, gulp.series(js, copyAndReload));
             taker.watch(assets.watchFiles, gulp.series(assets, copyAndReload));
-            taker.watch(patterns.watchFiles, gulp.series(patterns, reload));
+            taker.watch(patterns.watchFiles, gulp.series(patterns, copyPatterns, reload));
         })));
     }
     resolveRoot(subPath) {
