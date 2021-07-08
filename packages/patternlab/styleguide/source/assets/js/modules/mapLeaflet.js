@@ -146,16 +146,34 @@ export default (function (window,document) {
 
       mymap.addControl(new customControl());
 
+      const disablePageScroll = () => {
+        // Get the current page scroll position
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+      }
+      
+      const enablePageScroll = () => {
+          window.onscroll = function() {};
+      }
+      
       const container = L.DomUtil.get(containerID);
 
       const unlockMove = () => {
+        const target = document.activeElement;
+        console.log(target, 'unlock')
         locked = false;
         container.innerHTML = setStatusText(locked);
         //mymap.scrollWheelZoom.enable(); 
         mymap.dragging.enable();
       }
 
-      const lockMove = () => {
+      const lockMove = (target) => {
+        console.log(target, 'lock')
         locked = true;
         container.innerHTML = setStatusText(locked);
         mymap.scrollWheelZoom.disable(); 
@@ -169,7 +187,7 @@ export default (function (window,document) {
       const customBlur = (target) => {
         const inMap = mapWrapper.contains(target)
         if (!inMap) {
-          lockMove();
+          lockMove(target);
         }
       }
 
@@ -180,6 +198,7 @@ export default (function (window,document) {
 
       document.onkeyup = (e) => {
         if (e.key == 'Tab') {
+          console.log('on tab blur')
           const target = document.activeElement;
           customBlur(target)
         }
