@@ -1,0 +1,4 @@
+___DESCRIPTION___
+Added
+Minor
+- (React) DP-10853: Adds Overlay component.
