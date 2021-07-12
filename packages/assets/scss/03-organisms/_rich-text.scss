@@ -5,6 +5,39 @@ $rich-text-spacing-mobile: 1.5rem;
 $heading-indent: $gutter;
 
 .ma__rich-text {
+  /* listing styles types */
+  ol[type="a"] {
+    list-style-type: lower-latin;
+  }
+
+  ol[type="A"] {
+    list-style-type: upper-latin;
+  }
+
+  ol[type="i"] {
+    list-style-type: lower-roman;
+  }
+
+  ol[type="I"] {
+    list-style-type: upper-roman;
+  }
+  
+  ol[type="1"] {
+    list-style-type: decimal;
+  }
+
+  ul[type="circle"] {
+    list-style-type: circle;
+  }
+
+  ul[type="disc"] {
+    list-style-type: disc;
+  }
+
+  ul[type="square"] {
+    list-style-type: square;
+  }
+  /* end of listing styles types */
 
   @include clearfix;
 
