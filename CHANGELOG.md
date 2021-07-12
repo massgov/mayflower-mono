@@ -1,6 +1,18 @@
 # Mayflower Release Notes
 All notable changes to this project will be documented in this file.
 
+## 11.8.0 (7/12/2021)
+### Changed 
+- (Patternlab) [ContentTypes] DP-21924: Changed Twig syntax for drupal-9 (#1434)
+- (Patternlab) [Table] DP-18737: Target regular richtext table more specifically. (#1439)
+
+### Added 
+- (Patternlab) [GeneralTeaser] DP-22334: Add quick action links to GeneralTeaser component. (#1435)
+
+### Fixed 
+- (Assets, Patternlab) [Elements] DP-22506: Reverted globally changed ul/ol elements styling targeting types, fix the listing regressions in navs. (#1440)
+- (React, Patternlab) [GoogleTranslateElement] DP-22281: Fixed the google translate element for mobile. (#1438)
+
 ## 11.7.1 (6/28/2021)
 ### Added 
 - (Patternlab) [ImagePromo] DP-22122: Added aria-hidden to hide duplicate content from screen readers. (#1417)

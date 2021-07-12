@@ -1,6 +1,0 @@
-Fixed:
-  - project: React, Patternlab
-    component: GoogleTranslateElement
-    description: Fixed the google translate element for mobile.
-    issue: DP-22281
-    impact: Minor

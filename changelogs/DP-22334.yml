@@ -1,6 +1,0 @@
-Added:
-  - project: Patternlab
-    component: GeneralTeaser
-    description: Add quick action links to GeneralTeaser component. (#1435)
-    issue: DP-22334
-    impact: Minor

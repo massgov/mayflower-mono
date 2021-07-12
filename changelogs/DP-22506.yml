@@ -1,6 +1,0 @@
-Fixed:
-  - project: Assets, Patternlab
-    component: Elements
-    description: Reverted globally changed ul/ol elements styling targeting types, fix the listing regressions in navs. (#1440)
-    issue: DP-22506
-    impact: Patch

@@ -1,6 +1,0 @@
-Changed:
-  - project: Patternlab
-    component: Table
-    description: Target regular richtext table more specifically. (#1439)
-    issue: DP-18737
-    impact: Patch
