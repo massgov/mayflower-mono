@@ -1,5 +1,5 @@
 export default (function (window,document,$,undefined) {
-  $('.js-location-filters').each(function() {
+  $('.js-location-filters:not(.leaflet)').each(function() {
     let $el = $(this);
 
     let $resultHeading = $('.js-results-heading'),

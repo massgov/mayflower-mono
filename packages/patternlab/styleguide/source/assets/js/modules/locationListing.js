@@ -14,7 +14,7 @@ export default (function (window, document, $) {
     parent = ".js-image-promos",
     mapCol = ".js-location-listing-map";
 
-  $(".js-location-listing").each(function (i) {
+  $(".js-location-listing:not(.leaflet)").each(function (i) {
     let $el = $(this),
       $mapCol = $el.find(".js-location-listing-map"),
       $map = $el.find(".js-google-map"),

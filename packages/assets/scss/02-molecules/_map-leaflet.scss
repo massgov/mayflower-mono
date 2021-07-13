@@ -36,6 +36,15 @@
     }
   }
 
+  .ma__location-listing__map & {
+    height: 100%;
+
+    &__map {
+      height: 100%;      
+    }
+  }
+
+
   &__directions-link {
     width: 100%;
     background-color: $c-primary-alt;

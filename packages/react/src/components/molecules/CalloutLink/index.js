@@ -15,8 +15,8 @@ const CalloutLink = (calloutLink) => {
   const classNames = `ma__callout-link${calloutLinkTheme}`;
 
   return(
-    <div className={classNames} title={calloutLink.info}>
-      <a href={calloutLink.href}>
+    <div className={classNames}>
+      <a href={calloutLink.href} title={calloutLink.text}>
         { (calloutLink.eyebrow || calloutLink.time) && (
           <div className="ma__callout-link__header">
             <span className="ma__callout-link__eyebrow">{calloutLink.eyebrow}</span>
